@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             ? '-apple-system'
             : null,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Demo v3'),
     );
   }
 }
