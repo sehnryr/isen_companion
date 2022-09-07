@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:isen_ouest_companion/progress_hud/progress_hud_wrapper.dart';
 
 void main() async {
   // Enable Flutter cryptography
@@ -65,7 +66,9 @@ class MyApp extends StatelessWidget {
               ? '-apple-system'
               : null,
         ),
-        home: const MyHomePage(title: 'Demo v3'),
+        home: Builder(builder: (context) {
+          return const ProgressHUDWrapper(child: MyHomePage(title: 'Demo v3'));
+        }),
       ),
     );
   }
