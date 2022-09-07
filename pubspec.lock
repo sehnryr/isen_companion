@@ -203,7 +203,7 @@ packages:
     source: hosted
     version: "2.0.1"
   flutter_progress_hud:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_progress_hud
       url: "https://pub.dartlang.org"
@@ -431,6 +431,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  progress_hud:
+    dependency: "direct main"
+    description:
+      path: "packages/progress_hud"
+      relative: true
+    source: path
+    version: "1.0.0"
   pub_semver:
     dependency: transitive
     description:
