@@ -452,6 +452,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  route_creator:
+    dependency: "direct main"
+    description:
+      path: "packages/route_creator"
+      relative: true
+    source: path
+    version: "1.0.0"
   shelf:
     dependency: transitive
     description:

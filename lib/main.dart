@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud_wrapper.dart';
+import 'package:route_creator/route_creator.dart';
 
 void main() async {
   // Enable Flutter cryptography
