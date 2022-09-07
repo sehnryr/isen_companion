@@ -26,39 +26,46 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color(0xFF6D6875),
-          primaryContainer: const Color(0xFF4D4955),
-        ),
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            color: Color(0xFF6D6875),
-            letterSpacing: -1.5,
-            fontSize: 34,
-            fontWeight: FontWeight.w500,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
+      },
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: const Color(0xFF6D6875),
+            primaryContainer: const Color(0xFF4D4955),
           ),
-          button: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.25,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+          textTheme: const TextTheme(
+            headline1: TextStyle(
+              color: Color(0xFF6D6875),
+              letterSpacing: -1.5,
+              fontSize: 34,
+              fontWeight: FontWeight.w500,
+            ),
+            button: TextStyle(
+              color: Colors.white,
+              letterSpacing: 1.25,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            overline: TextStyle(
+              letterSpacing: 1.5,
+              fontSize: 10,
+              fontWeight: FontWeight.normal,
+            ),
           ),
-          overline: TextStyle(
-            letterSpacing: 1.5,
-            fontSize: 10,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
 
         // https://github.com/flutter/flutter/issues/93140
         fontFamily: kIsWeb && window.navigator.userAgent.contains('OS 15_')
             ? '-apple-system'
             : null,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Demo v3'),
     );
   }
 }
