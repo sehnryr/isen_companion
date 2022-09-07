@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:cryptography_flutter/cryptography_flutter.dart';
 
-void main() {
+void main() async {
+  // Enable Flutter cryptography
+  FlutterCryptography.enable();
+
+  // Initialize Hive for flutter
+  await Hive.initFlutter();
+  await Hive.openBox('isenOuestCompanionBox');
+
   runApp(const MyApp());
 }
 
@@ -48,16 +58,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  var box = Hive.box('isenOuestCompanionBox');
+  String counterKey = 'counter';
+
+  @override
+  void initState() {
+    if (!box.containsKey(counterKey)) {
+      box.put(counterKey, 0);
+    }
+
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      box.put(counterKey, box.get(counterKey) + 1);
     });
   }
 
@@ -99,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              box.get('counter').toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
