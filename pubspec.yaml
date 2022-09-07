@@ -16,7 +16,10 @@ dependencies:
     hive_flutter: ^1.1.0
     cryptography: ^2.0.5
     cryptography_flutter: ^2.0.2
-    flutter_progress_hud: ^2.0.2
+
+    # personal packages
+    progress_hud:
+        path: packages/progress_hud
 
 dev_dependencies:
     flutter_test:
