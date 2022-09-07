@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:isen_ouest_companion/login/login_footer.dart';
 import 'package:isen_ouest_companion/login/login_icon.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
+import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/base/base_constant.dart';
-import 'package:isen_ouest_companion/login/login_inputs.dart';
-import 'package:isen_ouest_companion/login/login_buttons.dart';
+import 'package:isen_ouest_companion/base/password_input.dart';
+import 'package:isen_ouest_companion/base/username_input.dart';
+import 'package:isen_ouest_companion/login/login_button.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends State<LoginPage> {
   late TextEditingController usernameController;
   late TextEditingController passwordController;
   bool usernameError = false;
@@ -116,21 +120,21 @@ class _LoginPageState extends State<LoginPage> {
                 //   progress?.dismiss();
                 // }
               }),
-              // LostPasswordButton(onPressed: () {
-              //   setState(() {
-              //     if (usernameError) {
-              //       usernameError = usernameController.text.isNotEmpty;
-              //     }
-              //     if (passwordError) {
-              //       passwordError = passwordController.text.isNotEmpty;
-              //     }
-              //   });
-              //   Navigator.of(context).push(createRoute(
-              //       LostPasswordScreen(
-              //         usernameController: usernameController,
-              //       ),
-              //       Direction.fromBottom));
-              // }),
+              RecoverPasswordButton(onPressed: () {
+                setState(() {
+                  if (usernameError) {
+                    usernameError = usernameController.text.isNotEmpty;
+                  }
+                  if (passwordError) {
+                    passwordError = passwordController.text.isNotEmpty;
+                  }
+                });
+                Navigator.of(context).push(createRoute(
+                    RecoverPasswordPage(
+                      usernameController: usernameController,
+                    ),
+                    Direction.fromBottom));
+              }),
             ],
           ),
         ),
