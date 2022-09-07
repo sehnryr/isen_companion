@@ -26,7 +26,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color(0xFF6D6875),
+          primaryContainer: const Color(0xFF4D4955),
+        ),
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            color: Color(0xFF6D6875),
+            letterSpacing: -1.5,
+            fontSize: 34,
+            fontWeight: FontWeight.w500,
+          ),
+          button: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.25,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+          overline: TextStyle(
+            letterSpacing: 1.5,
+            fontSize: 10,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
 
         // https://github.com/flutter/flutter/issues/93140
         fontFamily: kIsWeb && window.navigator.userAgent.contains('OS 15_')
