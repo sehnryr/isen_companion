@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   // Enable Flutter cryptography
@@ -13,6 +14,8 @@ void main() async {
   // Initialize Hive for flutter
   await Hive.initFlutter();
   await Hive.openBox('isenOuestCompanionBox');
+
+  await initializeDateFormatting();
 
   runApp(const MyApp());
 }
