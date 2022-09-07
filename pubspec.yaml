@@ -20,6 +20,8 @@ dependencies:
     # personal packages
     progress_hud:
         path: packages/progress_hud
+    route_creator:
+        path: packages/route_creator
 
 dev_dependencies:
     flutter_test:

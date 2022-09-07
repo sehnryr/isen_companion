@@ -1,0 +1,19 @@
+name: route_creator
+version: 1.0.0
+
+environment:
+    sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+    flutter:
+        sdk: flutter
+
+    progress_hud:
+        path: ../progress_hud
+
+dev_dependencies:
+    flutter_test:
+        sdk: flutter
+
+flutter:
+    uses-material-design: true
