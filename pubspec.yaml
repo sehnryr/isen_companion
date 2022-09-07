@@ -16,6 +16,8 @@ dependencies:
     hive_flutter: ^1.1.0
     cryptography: ^2.0.5
     cryptography_flutter: ^2.0.2
+    isen_aurion_client: ^1.0.4
+    flutter_svg: ^1.1.4
 
     # personal packages
     progress_hud:
@@ -33,3 +35,6 @@ dev_dependencies:
 
 flutter:
     uses-material-design: true
+
+    assets:
+        - assets/images/logo_hat.svg
