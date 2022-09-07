@@ -1,4 +1,4 @@
-name: Build & deploy
+name: Build & deploy for web
 permissions:
   contents: write
 on:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy-web:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,33 +20,17 @@ jobs:
       with:
         flutter-version: '3.3.0'
 
+    - name: Enable web
+      run: flutter config --enable-web
+
     - name: Get dependencies
       run: flutter pub get
 
     - name: Build release project
-      run: flutter build web
+      run: flutter build web --release
 
-    - name: Upload production-ready build files
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: production-files
-        path: ./build/web
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v3.0.0
-      with:
-        name: production-files
-        path: ./build
-        
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.4.0
       with:
         token: ${{ secrets.DEPLOY_TOKEN }}
-        folder: ./build
+        folder: build/web
