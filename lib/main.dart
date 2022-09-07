@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:progress_hud/progress_hud_wrapper.dart';
+import 'package:progress_hud/progress_hud.dart';
 import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/login/login_page.dart';
@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
               : null,
         ),
         home: Builder(builder: (context) {
-          return const ProgressHUDWrapper(child: LoginPage());
+          return const ProgressHUD(child: LoginPage());
         }),
       ),
     );
