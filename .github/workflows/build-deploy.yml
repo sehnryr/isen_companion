@@ -1,0 +1,53 @@
+name: Build & deploy
+permissions:
+  contents: write
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2.6.2
+      with:
+        flutter-version: '3.3.0'
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Build release project
+      run: flutter build web
+
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: production-files
+        path: ./build/web
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v3.0.0
+      with:
+        name: production-files
+        path: ./build
+        
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.4.0
+      with:
+        folder: ./build
