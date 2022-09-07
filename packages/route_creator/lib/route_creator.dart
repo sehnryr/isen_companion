@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progress_hud/progress_hud_wrapper.dart';
+import 'package:progress_hud/progress_hud.dart';
 
 class Direction {
   static const Offset fromTop = Offset(0.0, -1.0);
@@ -10,7 +10,7 @@ class Direction {
 
 Route createRoute(Widget page, Offset direction) => PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          ProgressHUDWrapper(child: page),
+          ProgressHUD(child: page),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = direction;
         const end = Offset.zero;

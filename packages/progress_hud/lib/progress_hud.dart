@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart' as fph;
 
-class ProgressHUDWrapper extends StatelessWidget {
+class ProgressHUD extends StatelessWidget {
   final Widget child;
 
-  const ProgressHUDWrapper({Key? key, required this.child}) : super(key: key);
+  const ProgressHUD({Key? key, required this.child}) : super(key: key);
+
+  dynamic of(BuildContext context) {
+    return fph.ProgressHUD.of(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ProgressHUD(
+    return fph.ProgressHUD(
       backgroundColor: Colors.transparent,
       borderColor: Colors.transparent,
       indicatorColor: Theme.of(context).colorScheme.primary,
