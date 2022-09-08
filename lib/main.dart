@@ -8,6 +8,7 @@ import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:route_creator/route_creator.dart';
+import 'package:flutter/services.dart';
 
 import 'package:isen_ouest_companion/login/login_page.dart';
 
@@ -71,6 +72,10 @@ class MyApp extends StatelessWidget {
               : null,
         ),
         home: Builder(builder: (context) {
+          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+          ));
           return const ProgressHUD(child: LoginPage());
         }),
       ),
