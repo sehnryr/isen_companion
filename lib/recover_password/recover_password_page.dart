@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:progress_hud/progress_hud.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:isen_ouest_companion/base/base_constant.dart';
 import 'package:isen_ouest_companion/base/code_input.dart';
@@ -23,7 +22,6 @@ class RecoverPasswordPage extends StatefulWidget {
 class RecoverPasswordPageState extends State<RecoverPasswordPage> {
   late TextEditingController usernameController;
   late TextEditingController codeController;
-  late FToast fToast;
   bool usernameError = false;
   bool codeError = false;
 
@@ -32,31 +30,6 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
     usernameController = widget.usernameController ?? TextEditingController();
     codeController = TextEditingController();
     super.initState();
-
-    fToast = FToast();
-    fToast.init(context);
-  }
-
-  void _showToast(String text,
-      {Duration duration = const Duration(seconds: 2)}) {
-    Widget toast = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.0),
-          color: Theme.of(context).colorScheme.primary.withAlpha(192)),
-      child: Text(
-        text,
-        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-      ),
-    );
-
-    fToast.removeQueuedCustomToasts();
-
-    fToast.showToast(
-      child: toast,
-      gravity: ToastGravity.BOTTOM,
-      toastDuration: duration,
-    );
   }
 
   @override
@@ -124,8 +97,11 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
                       break;
                     case RecoverResponseCode.Success:
                     default:
-                      _showToast("Un email vous à été envoyé.",
-                          duration: const Duration(seconds: 4));
+                      const snackBar = SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        content: Text("Un email vous à été envoyé."),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       Navigator.of(context).pop();
                       break;
                   }
