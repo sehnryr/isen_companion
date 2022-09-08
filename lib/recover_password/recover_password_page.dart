@@ -66,6 +66,8 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
                     string.isEmpty || !RegExp(r'^[0-9]+$').hasMatch(string)),
               ),
               SendLinkButton(onPressed: () {
+                FocusScope.of(context).unfocus();
+
                 if (usernameController.text.isEmpty) {
                   setState(() => usernameError = true);
                 }
