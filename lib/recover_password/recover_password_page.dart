@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:isen_ouest_companion/recover_password/recover_password_app_bar.dart';
-import 'package:isen_ouest_companion/recover_password/recover_password_footer.dart';
 import 'package:progress_hud/progress_hud.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:isen_ouest_companion/base/base_constant.dart';
 import 'package:isen_ouest_companion/base/code_input.dart';
 import 'package:isen_ouest_companion/base/username_input.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_send_link_button.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_app_bar.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_footer.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_service.dart';
 
 class RecoverPasswordPage extends StatefulWidget {
   final TextEditingController? usernameController;
@@ -21,6 +23,7 @@ class RecoverPasswordPage extends StatefulWidget {
 class RecoverPasswordPageState extends State<RecoverPasswordPage> {
   late TextEditingController usernameController;
   late TextEditingController codeController;
+  late FToast fToast;
   bool usernameError = false;
   bool codeError = false;
 
@@ -29,6 +32,31 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
     usernameController = widget.usernameController ?? TextEditingController();
     codeController = TextEditingController();
     super.initState();
+
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  void _showToast(String text,
+      {Duration duration = const Duration(seconds: 2)}) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25.0),
+          color: Theme.of(context).colorScheme.primary.withAlpha(192)),
+      child: Text(
+        text,
+        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+      ),
+    );
+
+    fToast.removeQueuedCustomToasts();
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: duration,
+    );
   }
 
   @override
@@ -71,7 +99,37 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
                 if (codeController.text.isEmpty) {
                   setState(() => codeError = true);
                 }
-                // TODO: make the request to the server to do the password reset
+                if (usernameController.text.isEmpty &&
+                    codeController.text.isEmpty) {
+                  return;
+                }
+
+                final username = usernameController.text;
+                final code = int.parse(codeController.text);
+
+                Future<RecoverResponseCode> responseCode =
+                    RecoverPassword.sendRecoverRequest(
+                  username: username,
+                  code: code,
+                );
+
+                responseCode.then((value) {
+                  switch (value) {
+                    case RecoverResponseCode.Error:
+                    case RecoverResponseCode.UsernameError:
+                      setState(() => usernameError = true);
+                      break;
+                    case RecoverResponseCode.CodeError:
+                      setState(() => codeError = true);
+                      break;
+                    case RecoverResponseCode.Success:
+                    default:
+                      _showToast("Un email vous à été envoyé.",
+                          duration: const Duration(seconds: 4));
+                      Navigator.of(context).pop();
+                      break;
+                  }
+                });
               }),
             ],
           ),
