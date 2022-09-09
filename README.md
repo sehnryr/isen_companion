@@ -1,16 +1,7 @@
-# isen_ouest_companion
+# DISCONTINUED
 
-A new Flutter project.
+> **Warning**
 
-## Getting Started
+This project has been discontinued as Flutter does not support the web platform very well, see: https://github.com/flutter/flutter/issues/87182.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I have renamed this repo as I will remake a web app with [Remix](https://remix.run/) at [sehnryr/isen_ouest_companion](https://github.com/sehnryr/isen_ouest_companion).
