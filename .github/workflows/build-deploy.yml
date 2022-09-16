@@ -27,7 +27,7 @@ jobs:
       run: flutter pub get
 
     - name: Build release project
-      run: flutter build web --release --base-href="/isen_ouest_companion_flutter/" --web-renderer canvaskit
+      run: flutter build web --release --base-href="/${{ github.event.repository.name }}/" --web-renderer canvaskit
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.4.0
