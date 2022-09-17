@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.isen_ouest_companion">
    <application
-        android:label="isen_ouest_companion"
+        android:label="ISEN Ouest Companion"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
