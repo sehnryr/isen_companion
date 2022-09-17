@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:html' if (dart.library.io) '';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,8 @@ import 'package:route_creator/route_creator.dart';
 import 'package:flutter/services.dart';
 
 import 'package:isen_ouest_companion/login/login_page.dart';
+
+var window;
 
 void main() async {
   // Enable Flutter cryptography
