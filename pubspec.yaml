@@ -34,6 +34,14 @@ dev_dependencies:
     flutter_lints: ^2.0.0
     hive_generator: ^1.1.3
     build_runner: ^2.2.0
+    flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "assets/launcher_icon/ios_icon.png" # Provide icon for ios
+    adaptive_icon_background: "assets/launcher_icon/background-layer.png"
+    adaptive_icon_foreground: "assets/launcher_icon/foreground-layer.png"
 
 flutter:
     uses-material-design: true
