@@ -13,7 +13,7 @@ jobs:
     - name: Import sign key
       env:
         KEY_JKS: ${{ secrets.KEY_JKS }}
-        run: echo $KEY_JKS > android/key.jks
+      run: echo $KEY_JKS > android/key.jks
 
     - name: Install Flutter
       uses: subosito/flutter-action@v2.6.2
@@ -27,7 +27,7 @@ jobs:
       env:
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         ALIAS_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
-        run: flutter build apk --release
+      run: flutter build apk --release
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
