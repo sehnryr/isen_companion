@@ -19,6 +19,7 @@ dependencies:
     isen_aurion_client: ^1.0.4
     flutter_svg: ^1.1.4
     requests: ^4.5.0
+    universal_html: ^2.0.8
 
     # personal packages
     progress_hud:
