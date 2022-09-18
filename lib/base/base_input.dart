@@ -4,23 +4,27 @@ import 'package:isen_ouest_companion/base/base_constants.dart';
 
 class BaseInput extends StatefulWidget {
   final TextEditingController controller;
-  final Iterable<String> autofillHints;
+  final Iterable<String>? autofillHints;
   final void Function(String)? onChanged;
-  final String labelText;
+  final String? labelText;
+  final String? hintText;
   final String errorText;
-  final Icon prefixIcon;
+  final Icon? prefixIcon;
   final bool isPassword;
+  final bool outlined;
   final bool error;
 
   const BaseInput({
     Key? key,
     required this.controller,
-    required this.autofillHints,
-    required this.labelText,
     required this.errorText,
-    required this.prefixIcon,
+    this.labelText,
+    this.hintText,
+    this.autofillHints,
+    this.prefixIcon,
     this.onChanged,
     this.isPassword = false,
+    this.outlined = false,
     this.error = false,
   }) : super(key: key);
 
@@ -46,10 +50,13 @@ class BaseInputState extends State<BaseInput> {
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           labelText: widget.labelText,
+          hintText: widget.hintText,
           errorText: widget.error ? widget.errorText : null,
-          border: OutlineInputBorder(
-            borderRadius: borderRadius,
-          ),
+          border: widget.outlined
+              ? OutlineInputBorder(
+                  borderRadius: borderRadius,
+                )
+              : null,
           prefixIcon: widget.prefixIcon,
           suffixIcon: widget.isPassword
               ? IconButton(
