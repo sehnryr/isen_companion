@@ -16,7 +16,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () => Navigator.pop(context),
         icon: const Icon(Icons.arrow_back),
       ),
-      title: const Text("Settings"),
+      title: const Text("Paramètres"),
     );
   }
 
