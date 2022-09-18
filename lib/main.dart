@@ -23,8 +23,28 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  MyAppState createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    SecureStorage.get(SecureStorageKey.CORSProxy)
+        .then((value) async => await SecureStorage.set(
+              SecureStorageKey.CORSProxy,
+              value ?? DefaultSettings.proxyUrl,
+            ));
+    SecureStorage.get(SecureStorageKey.ServiceUrl)
+        .then((value) async => await SecureStorage.set(
+              SecureStorageKey.ServiceUrl,
+              value ?? DefaultSettings.serviceUrl,
+            ));
+    super.initState();
+  }
 
   // This widget is the root of your application.
   @override
