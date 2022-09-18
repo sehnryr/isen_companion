@@ -8,7 +8,7 @@ class BaseInput extends StatefulWidget {
   final void Function(String)? onChanged;
   final String? labelText;
   final String? hintText;
-  final String errorText;
+  final String? errorText;
   final Icon? prefixIcon;
   final bool isPassword;
   final double? height;
@@ -18,7 +18,7 @@ class BaseInput extends StatefulWidget {
   const BaseInput({
     Key? key,
     required this.controller,
-    required this.errorText,
+    this.errorText,
     this.labelText,
     this.hintText,
     this.autofillHints,
