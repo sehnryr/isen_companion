@@ -12,8 +12,6 @@ dependencies:
         sdk: flutter
 
     intl: ^0.17.0
-    hive: ^2.2.3
-    hive_flutter: ^1.1.0
     cryptography: ^2.0.5
     cryptography_flutter: ^2.0.2
     isen_aurion_client: ^1.0.4
@@ -26,6 +24,8 @@ dependencies:
         path: packages/progress_hud
     route_creator:
         path: packages/route_creator
+    secure_storage:
+        path: packages/secure_storage
 
 dev_dependencies:
     flutter_test:
