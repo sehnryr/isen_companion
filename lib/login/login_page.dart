@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isen_ouest_companion/login/login_app_bar.dart';
 import 'package:isen_ouest_companion/login/login_footer.dart';
 import 'package:isen_ouest_companion/login/login_icon.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
@@ -50,6 +51,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const LoginAppBar(),
       body: Container(
         padding: padding,
         child: AutofillGroup(
@@ -79,14 +81,15 @@ class LoginPageState extends State<LoginPage> {
                 usernameError = !_usernameValidation(username);
                 passwordError = !_passwordValidation(password);
 
-                // if (usernameError || passwordError) {
-                //   if (usernameError) {
-                //     setState(() => usernameError = usernameError);
-                //   }
-                //   if (passwordError) {
-                //     setState(() => passwordError = passwordError);
-                //   }
-                // } else {
+                if (usernameError || passwordError) {
+                  if (usernameError) {
+                    setState(() => usernameError = usernameError);
+                  }
+                  if (passwordError) {
+                    setState(() => passwordError = passwordError);
+                  }
+                }
+                // else {
                 //   final progress = ProgressHUD.of(context);
                 //   progress?.show();
                 //   try {
