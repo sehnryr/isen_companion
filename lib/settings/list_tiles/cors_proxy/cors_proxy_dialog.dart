@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:secure_storage/secure_storage.dart';
 
+import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_input.dart';
 
 class CORSProxyDialog extends StatefulWidget {
