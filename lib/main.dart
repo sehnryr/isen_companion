@@ -6,10 +6,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:route_creator/route_creator.dart';
 import 'package:flutter/services.dart';
-import 'package:secure_storage/secure_storage.dart';
 
+import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
+import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:isen_ouest_companion/settings/settings_constants.dart';
 
 void main() async {
@@ -38,11 +39,11 @@ class MyAppState extends State<MyApp> {
               SecureStorageKey.CORSProxy,
               value ?? DefaultSettings.proxyUrl,
             ));
-    SecureStorage.get(SecureStorageKey.ServiceUrl)
-        .then((value) async => await SecureStorage.set(
-              SecureStorageKey.ServiceUrl,
-              value ?? DefaultSettings.serviceUrl,
-            ));
+    SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) async {
+      String serviceUrl = value ?? DefaultSettings.serviceUrl;
+      await SecureStorage.set(SecureStorageKey.ServiceUrl, serviceUrl);
+      Aurion.init(serviceUrl);
+    });
     super.initState();
   }
 
