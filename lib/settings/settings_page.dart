@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_tile.dart';
 import 'package:secure_storage/secure_storage.dart';
 
 import 'package:isen_ouest_companion/settings/settings_constants.dart';
@@ -50,31 +51,11 @@ class SettingsPageState extends State<SettingsPage> {
             ),
             dense: true,
           ),
-          ListTile(
-            title: const Text(
-              "CORS bypass proxy",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(proxyController.text.isNotEmpty
-                ? proxyController.text
-                : "None"),
-            trailing: Icon(
-              Icons.edit,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return CORSProxyDialog(
-                    controller: proxyController,
-                    title: "CORS bypass proxy",
-                  );
-                },
-              ).then((_) =>
-                  setState(() => proxyController.text = proxyController.text));
-            },
-          ),
+          CorsProxyTile(
+            controller: proxyController,
+            onClose: () =>
+                setState(() => proxyController.text = proxyController.text),
+          )
         ],
       ),
     );
