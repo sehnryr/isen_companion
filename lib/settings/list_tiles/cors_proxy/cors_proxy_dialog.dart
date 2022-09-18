@@ -18,12 +18,13 @@ class CORSProxyDialog extends StatefulWidget {
 }
 
 class CORSProxyDialogState extends State<CORSProxyDialog> {
-  String proxy = "";
-  bool proxyError = false;
+  late String proxy;
+  late bool proxyError;
 
   @override
   void initState() {
     proxy = widget.controller.text;
+    proxyError = !_proxyValidation(proxy);
     super.initState();
   }
 
@@ -42,7 +43,7 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
           controller: widget.controller,
           error: proxyError,
           onChanged: (String proxy) =>
-              setState(() => proxyError = !_proxyValidation(proxy)),
+              setState(() => proxyError = !_proxyValidation(proxy.trim())),
         )),
         SimpleDialogOption(
             child: Row(
@@ -63,9 +64,6 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
                   proxy = widget.controller.text.trim();
                   SecureStorage.set(SecureStorageKey.CORSProxy, proxy)
                       .then((value) {
-                    setState(() {
-                      widget.controller.text = proxy;
-                    });
                     Navigator.pop(context, 'OK');
                   });
                 }
