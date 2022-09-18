@@ -53,9 +53,9 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
               onPressed: () {
                 // reset controller text
                 widget.controller.text = proxy;
-                Navigator.pop(context, 'Cancel');
+                Navigator.pop(context, 'Annuler');
               },
-              child: const Text('Cancel'),
+              child: const Text('Annuler'),
             ),
             TextButton(
               onPressed: () {

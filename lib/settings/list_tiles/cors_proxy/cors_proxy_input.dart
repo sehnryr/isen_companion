@@ -18,8 +18,8 @@ class CORSProxyInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseInput(
       controller: controller,
-      hintText: "None",
-      errorText: "Unrecognized scheme (http, https).",
+      hintText: "Aucun",
+      errorText: "L'url n'est pas valide (http, https).",
       error: error,
       onChanged: onChanged,
       height: null,

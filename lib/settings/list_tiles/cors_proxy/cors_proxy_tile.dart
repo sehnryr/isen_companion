@@ -21,7 +21,7 @@ class CorsProxyTile extends StatelessWidget {
         title,
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      subtitle: Text(controller.text.isNotEmpty ? controller.text : "None"),
+      subtitle: Text(controller.text.isNotEmpty ? controller.text : "Aucun"),
       trailing: Icon(
         Icons.edit,
         color: Theme.of(context).colorScheme.primary,
