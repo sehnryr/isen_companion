@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:secure_storage/secure_storage.dart';
 
 import 'package:isen_ouest_companion/settings/settings_constants.dart';
@@ -21,30 +20,13 @@ class SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     proxyController = TextEditingController();
-    SecureStorage.get(SecureStorageKey.CORSProxy).then((value) async {
-      setState(() {
-        proxyController.text =
-            value ?? (kIsWeb ? DefaultSettings.defaultProxy : "");
-      });
-      if (value == null) {
-        await SecureStorage.set(
-          SecureStorageKey.CORSProxy,
-          proxyController.text,
-        );
-      }
-    });
+    SecureStorage.get(SecureStorageKey.CORSProxy).then((value) => setState(() {
+          proxyController.text = value!;
+        }));
     serviceUrlController = TextEditingController();
-    SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) async {
-      setState(() {
-        serviceUrlController.text = value ?? DefaultSettings.defaultServiceUrl;
-      });
-      if (value == null) {
-        await SecureStorage.set(
-          SecureStorageKey.ServiceUrl,
-          serviceUrlController.text,
-        );
-      }
-    });
+    SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) => setState(() {
+          serviceUrlController.text = value!;
+        }));
     super.initState();
   }
 
