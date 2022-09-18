@@ -1,4 +1,5 @@
 import 'package:requests/requests.dart';
+import 'package:secure_storage/secure_storage.dart';
 
 class RecoverResponseCode {
   final String _value;
@@ -17,13 +18,14 @@ class RecoverPassword {
 
   static const String serviceUrl =
       "https://web.isen-ouest.fr/password/sav/index.php?uri=/demande";
-  static const String proxyUrl = "https://restless-forest-4699.fly.dev/?url=";
 
   static Future<RecoverResponseCode> sendRecoverRequest({
     required String username,
     required int code,
   }) async {
     try {
+      String proxyUrl =
+          await SecureStorage.get(SecureStorageKey.CORSProxy) ?? "";
       var response = await Requests.post("$proxyUrl$serviceUrl", body: {
         'identifiant': username,
         'code': code,
