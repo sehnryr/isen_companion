@@ -1,25 +1,26 @@
 import 'package:universal_html/html.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:route_creator/route_creator.dart';
 import 'package:flutter/services.dart';
+import 'package:secure_storage/secure_storage.dart';
 
 import 'package:isen_ouest_companion/login/login_page.dart';
+import 'package:isen_ouest_companion/base/status_bar_color.dart';
+import 'package:isen_ouest_companion/settings/settings_page.dart';
 
 void main() async {
   // Enable Flutter cryptography
   FlutterCryptography.enable();
 
-  // Initialize Hive for flutter
-  await Hive.initFlutter();
-  await Hive.openBox('isenOuestCompanionBox');
-
   await initializeDateFormatting();
+
+  SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
+
+  SecureStorage.set(SecureStorageKey.CORSProxy, DefaultSettings.defaultProxy);
 
   runApp(const MyApp());
 }
@@ -71,11 +72,6 @@ class MyApp extends StatelessWidget {
               : null,
         ),
         home: Builder(builder: (context) {
-          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark,
-            statusBarBrightness: Brightness.light,
-          ));
           return const ProgressHUD(child: LoginPage());
         }),
       ),
