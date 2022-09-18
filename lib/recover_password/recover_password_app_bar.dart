@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:isen_ouest_companion/base/status_bar_color.dart';
+
 class RecoverPasswordAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   const RecoverPasswordAppBar({Key? key}) : super(key: key);
@@ -7,6 +9,7 @@ class RecoverPasswordAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      systemOverlayStyle: const StatusBarColor(),
       backgroundColor: Colors.transparent,
       elevation: 0,
       foregroundColor: Theme.of(context).colorScheme.primary,
