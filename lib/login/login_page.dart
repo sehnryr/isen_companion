@@ -121,6 +121,8 @@ class LoginPageState extends State<LoginPage> {
                 // }
               }),
               RecoverPasswordButton(onPressed: () {
+                FocusScope.of(context).unfocus();
+
                 setState(() {
                   if (usernameError) {
                     usernameError = usernameController.text.isNotEmpty;
