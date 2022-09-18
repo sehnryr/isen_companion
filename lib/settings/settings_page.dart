@@ -18,9 +18,7 @@ class SettingsPageState extends State<SettingsPage> {
 
   @override
   void initState() {
-    proxyController = TextEditingController()
-      ..addListener(
-          () => setState(() => proxyController.text = proxyController.text));
+    proxyController = TextEditingController();
     SecureStorage.get(SecureStorageKey.CORSProxy).then((value) async {
       setState(() {
         proxyController.text =
@@ -34,12 +32,6 @@ class SettingsPageState extends State<SettingsPage> {
       }
     });
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    proxyController.dispose();
-    super.dispose();
   }
 
   @override
@@ -79,7 +71,8 @@ class SettingsPageState extends State<SettingsPage> {
                     title: "CORS bypass proxy",
                   );
                 },
-              );
+              ).then((_) =>
+                  setState(() => proxyController.text = proxyController.text));
             },
           ),
         ],
