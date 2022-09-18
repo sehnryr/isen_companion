@@ -77,6 +77,7 @@ class LoginPageState extends State<LoginPage> {
       await SecureStorage.set(SecureStorageKey.Username, username);
       await SecureStorage.set(SecureStorageKey.Password, password);
       // TODO: route to schedule screen
+
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
