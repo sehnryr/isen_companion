@@ -10,7 +10,7 @@ import 'package:secure_storage/secure_storage.dart';
 
 import 'package:isen_ouest_companion/login/login_page.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
-import 'package:isen_ouest_companion/settings/settings_page.dart';
+import 'package:isen_ouest_companion/settings/settings_constants.dart';
 
 void main() async {
   // Enable Flutter cryptography
