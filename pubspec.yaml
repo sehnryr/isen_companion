@@ -46,7 +46,7 @@ flutter_icons:
         generate: true
         image_ppath: "assets/launcher_icon/icon.png"
         background_color: "#FFFFFF"
-        theme_color: "#E30613"
+        theme_color: "#4D4955"
 
 flutter:
     uses-material-design: true
