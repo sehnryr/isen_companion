@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/base/base_constant.dart';
+import 'package:isen_ouest_companion/base/base_constants.dart';
 
 class BaseFooter extends StatelessWidget {
   final String text;
