@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:route_creator/route_creator.dart';
+import 'package:isen_aurion_client/isen_aurion_client.dart';
 
+import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/base_constants.dart';
 import 'package:isen_ouest_companion/base/password_input.dart';
 import 'package:isen_ouest_companion/base/username_input.dart';
@@ -29,6 +34,19 @@ class LoginPageState extends State<LoginPage> {
   void initState() {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
+
+    SecureStorage.get(SecureStorageKey.Username).then((username) async {
+      if (username != null) {
+        setState(() => usernameController.text = username);
+        String? password = await SecureStorage.get(SecureStorageKey.Password);
+        if (password != null) {
+          setState(() =>
+              passwordController.text = "Vous n'êtes pas sensé voir ça...");
+          login(usernameController.text, password);
+        }
+      }
+    });
+
     super.initState();
   }
 
@@ -46,6 +64,37 @@ class LoginPageState extends State<LoginPage> {
   bool _passwordValidation(String password) {
     return password.isNotEmpty || RegExp(r'^[ ]{6:}$').hasMatch(password);
     // TODO: get the correct regex string for the password
+  }
+
+  void login(String username, String password) async {
+    final progress = ProgressHUD.of(context);
+    progress?.show();
+    try {
+      await Aurion.client
+          .login(username, password)
+          .timeout(const Duration(seconds: 20));
+
+      await SecureStorage.set(SecureStorageKey.Username, username);
+      await SecureStorage.set(SecureStorageKey.Password, password);
+      // TODO: route to schedule screen
+    } on AuthenticationException {
+      const snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text("Échec de l'authentification"),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } on TimeoutException {
+      SnackBar snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: const Text("Temps d'attente dépassé"),
+        action: SnackBarAction(
+          label: "Réessayer",
+          onPressed: () => login(username, password),
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+    progress?.dismiss();
   }
 
   @override
@@ -88,40 +137,9 @@ class LoginPageState extends State<LoginPage> {
                   if (passwordError) {
                     setState(() => passwordError = passwordError);
                   }
+                } else {
+                  login(username, password);
                 }
-                // else {
-                //   final progress = ProgressHUD.of(context);
-                //   progress?.show();
-                //   try {
-                //     final bool loginState =
-                //         await Aurion.login(username, password);
-                //     if (!loginState) {
-                //       const snackBar = SnackBar(
-                //         behavior: SnackBarBehavior.floating,
-                //         content: Text("Échec de l'authentification"),
-                //       );
-                //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                //     } else {
-                //       await Aurion.fetchSchedule();
-                //       final String? schedule =
-                //           await SecureStorage.getSchedule();
-                //       Navigator.of(context).pushReplacement(createRoute(
-                //         ScheduleScreen(
-                //             schedule: schedule != null
-                //                 ? json.decode(schedule)
-                //                 : null),
-                //         Direction.fromRight,
-                //       ));
-                //     }
-                //   } on TimeoutException {
-                //     const snackBar = SnackBar(
-                //       behavior: SnackBarBehavior.floating,
-                //       content: Text("Temps d'attente dépassé"),
-                //     );
-                //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                //   }
-                //   progress?.dismiss();
-                // }
               }),
               RecoverPasswordButton(onPressed: () {
                 FocusScope.of(context).unfocus();
