@@ -11,6 +11,7 @@ class BaseInput extends StatefulWidget {
   final String errorText;
   final Icon? prefixIcon;
   final bool isPassword;
+  final double? height;
   final bool outlined;
   final bool error;
 
@@ -23,6 +24,7 @@ class BaseInput extends StatefulWidget {
     this.autofillHints,
     this.prefixIcon,
     this.onChanged,
+    this.height = 90.0,
     this.isPassword = false,
     this.outlined = false,
     this.error = false,
@@ -40,7 +42,7 @@ class BaseInputState extends State<BaseInput> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 90.0,
+      height: widget.height,
       child: TextFormField(
         onChanged: widget.onChanged,
         focusNode: _focusNode,
