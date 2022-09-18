@@ -24,6 +24,7 @@ class CodeInput extends StatelessWidget {
       prefixIcon: const Icon(Icons.tag),
       error: error,
       onChanged: onChanged,
+      outlined: true,
     );
   }
 }

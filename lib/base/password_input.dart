@@ -25,6 +25,7 @@ class PasswordInput extends StatelessWidget {
       isPassword: true,
       error: error,
       onChanged: onChanged,
+      outlined: true,
     );
   }
 }

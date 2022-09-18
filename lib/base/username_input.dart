@@ -24,6 +24,7 @@ class UsernameInput extends StatelessWidget {
       prefixIcon: const Icon(Icons.person),
       error: error,
       onChanged: onChanged,
+      outlined: true,
     );
   }
 }
