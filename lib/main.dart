@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
           SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
           ));
           return const ProgressHUD(child: LoginPage());
         }),
