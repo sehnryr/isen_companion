@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:secure_storage/secure_storage.dart';
 
+import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/service_url/service_url_input.dart';
 
 class ServiceUrlDialog extends StatefulWidget {

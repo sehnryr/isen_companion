@@ -1,5 +1,6 @@
 import 'package:requests/requests.dart';
-import 'package:secure_storage/secure_storage.dart';
+
+import 'package:isen_ouest_companion/secure_storage.dart';
 
 class RecoverResponseCode {
   final String _value;
