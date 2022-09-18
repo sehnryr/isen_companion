@@ -20,8 +20,6 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
-  SecureStorage.set(SecureStorageKey.CORSProxy, DefaultSettings.defaultProxy);
-
   runApp(const MyApp());
 }
 
