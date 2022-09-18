@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_hud/progress_hud.dart';
 
-import 'package:isen_ouest_companion/base/base_constant.dart';
+import 'package:isen_ouest_companion/base/base_constants.dart';
 import 'package:isen_ouest_companion/base/code_input.dart';
 import 'package:isen_ouest_companion/base/username_input.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_send_link_button.dart';
