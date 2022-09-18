@@ -14,18 +14,17 @@ dependencies:
     intl: ^0.17.0
     cryptography: ^2.0.5
     cryptography_flutter: ^2.0.2
-    isen_aurion_client: ^1.0.4
+    isen_aurion_client: ^1.1.0
     flutter_svg: ^1.1.4
     requests: ^4.5.0
     universal_html: ^2.0.8
+    flutter_secure_storage: ^6.0.0
 
     # personal packages
     progress_hud:
         path: packages/progress_hud
     route_creator:
         path: packages/route_creator
-    secure_storage:
-        path: packages/secure_storage
 
 dev_dependencies:
     flutter_test:
