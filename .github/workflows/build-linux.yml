@@ -1,0 +1,28 @@
+name: Build binary for linux
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2.6.2
+      with:
+        flutter-version: '3.3.0'
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Build release apk
+      run: flutter build linux --release
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: release-apk
+        path: build/linux/x64/release/bundle
