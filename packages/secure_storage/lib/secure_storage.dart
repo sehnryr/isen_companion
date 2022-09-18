@@ -9,6 +9,7 @@ class SecureStorageKey {
   static const Username = SecureStorageKey._internal("username");
   static const Password = SecureStorageKey._internal("password");
   static const CORSProxy = SecureStorageKey._internal("cors_proxy");
+  static const ServiceUrl = SecureStorageKey._internal("service_url");
 }
 
 class SecureStorage {
