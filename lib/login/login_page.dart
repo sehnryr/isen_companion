@@ -16,6 +16,7 @@ import 'package:isen_ouest_companion/login/login_footer.dart';
 import 'package:isen_ouest_companion/login/login_icon.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
+import 'package:isen_ouest_companion/schedule/schedule_page.dart';
 import 'package:isen_ouest_companion/secure_storage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -38,11 +39,10 @@ class LoginPageState extends State<LoginPage> {
 
     SecureStorage.get(SecureStorageKey.Username).then((username) async {
       if (username != null) {
-        setState(() => usernameController.text = username);
+        usernameController.text = username;
         String? password = await SecureStorage.get(SecureStorageKey.Password);
         if (password != null) {
-          setState(() =>
-              passwordController.text = "Vous n'êtes pas sensé voir ça...");
+          passwordController.text = "Vous n'êtes pas sensé voir ça...";
           login(usernameController.text, password);
         }
       }
@@ -71,14 +71,13 @@ class LoginPageState extends State<LoginPage> {
     final progress = ProgressHUD.of(context);
     progress?.show();
     try {
-      await Aurion.client
-          .login(username, password)
+      await Aurion.login(username, password)
           .timeout(const Duration(seconds: 20));
 
-      await SecureStorage.set(SecureStorageKey.Username, username);
-      await SecureStorage.set(SecureStorageKey.Password, password);
-      // TODO: route to schedule screen
-
+      Navigator.of(context).pushReplacement(createRoute(
+        const SchedulePage(),
+        Direction.fromRight,
+      ));
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -93,6 +92,12 @@ class LoginPageState extends State<LoginPage> {
           label: "Réessayer",
           onPressed: () => login(username, password),
         ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } catch (e) {
+      SnackBar snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(e.toString()),
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
