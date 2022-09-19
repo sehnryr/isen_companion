@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:progress_hud/progress_hud.dart';
 import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:route_creator/route_creator.dart';
 import 'package:isen_aurion_client/isen_aurion_client.dart';
