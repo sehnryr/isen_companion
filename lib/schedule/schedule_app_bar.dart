@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:isen_ouest_companion/secure_storage.dart';
 
+import 'package:intl/intl.dart';
 import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
+import 'package:isen_ouest_companion/secure_storage.dart';
 
 class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const ScheduleAppBar({Key? key}) : super(key: key);
+  final void Function() showCalendarState;
+  final AnimationController animationController;
+  final DateTime focusedDay;
+  final String locale;
+
+  const ScheduleAppBar({
+    Key? key,
+    required this.showCalendarState,
+    required this.animationController,
+    required this.focusedDay,
+    required this.locale,
+  }) : super(key: key);
 
   @override
   ScheduleAppBarState createState() => ScheduleAppBarState();
@@ -38,6 +50,24 @@ class ScheduleAppBarState extends State<ScheduleAppBar> {
           icon: const Icon(Icons.logout),
         ),
       ],
+      title: InkWell(
+        onTap: widget.showCalendarState,
+        child: Container(
+          padding: const EdgeInsets.only(left: 5),
+          height: widget.preferredSize.height,
+          child: Row(children: [
+            Text(toBeginningOfSentenceCase(
+                    DateFormat.MMMM(widget.locale).format(widget.focusedDay)) ??
+                "Erreur"),
+            RotationTransition(
+              turns: Tween(begin: 0.0, end: -0.5)
+                  .chain(CurveTween(curve: Curves.easeInOut))
+                  .animate(widget.animationController),
+              child: const Icon(Icons.arrow_drop_down),
+            ),
+          ]),
+        ),
+      ),
     );
   }
 }
