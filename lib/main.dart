@@ -41,8 +41,7 @@ class MyAppState extends State<MyApp> {
             ));
     SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) async {
       String serviceUrl = value ?? DefaultSettings.serviceUrl;
-      await SecureStorage.set(SecureStorageKey.ServiceUrl, serviceUrl);
-      Aurion.init(serviceUrl);
+      await Aurion.init(serviceUrl);
     });
     super.initState();
   }
