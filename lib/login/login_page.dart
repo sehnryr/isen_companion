@@ -1,21 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:progress_hud/progress_hud.dart';
-import 'package:isen_ouest_companion/secure_storage.dart';
-import 'package:route_creator/route_creator.dart';
+
 import 'package:isen_aurion_client/isen_aurion_client.dart';
+import 'package:progress_hud/progress_hud.dart';
+import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/base_constants.dart';
 import 'package:isen_ouest_companion/base/password_input.dart';
 import 'package:isen_ouest_companion/base/username_input.dart';
 import 'package:isen_ouest_companion/login/login_app_bar.dart';
+import 'package:isen_ouest_companion/login/login_button.dart';
 import 'package:isen_ouest_companion/login/login_footer.dart';
 import 'package:isen_ouest_companion/login/login_icon.dart';
-import 'package:isen_ouest_companion/login/login_button.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
+import 'package:isen_ouest_companion/secure_storage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
