@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/service_url/service_url_input.dart';
 
@@ -62,10 +63,7 @@ class ServiceUrlDialogState extends State<ServiceUrlDialog> {
                 error = !_validation(widget.controller.text);
                 if (!error) {
                   text = widget.controller.text.trim();
-                  SecureStorage.set(SecureStorageKey.ServiceUrl, text)
-                      .then((value) {
-                    Navigator.pop(context, 'OK');
-                  });
+                  Aurion.init(text).then((_) => Navigator.pop(context, 'OK'));
                 }
               },
               child: const Text('OK'),
