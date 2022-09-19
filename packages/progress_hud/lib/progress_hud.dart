@@ -6,7 +6,7 @@ class ProgressHUD extends StatelessWidget {
 
   const ProgressHUD({Key? key, required this.child}) : super(key: key);
 
-  dynamic of(BuildContext context) {
+  static dynamic of(BuildContext context) {
     return fph.ProgressHUD.of(context);
   }
 
