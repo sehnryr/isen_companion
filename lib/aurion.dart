@@ -22,6 +22,14 @@ class Aurion {
   //   );
   // }
 
+  static DateTime get defaultStart {
+    return _client.defaultStart;
+  }
+
+  static DateTime get defaultEnd {
+    return _client.defaultEnd;
+  }
+
   static Future<List<Map<String, dynamic>>> getUserSchedule(
       {DateTime? start, DateTime? end}) {
     return _client.getUserSchedule(
