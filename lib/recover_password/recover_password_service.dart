@@ -20,8 +20,7 @@ class RecoverPassword {
     required int code,
   }) async {
     try {
-      String proxyUrl =
-          await SecureStorage.get(SecureStorageKey.proxyUrl) ?? "";
+      String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
       var response = await Requests.post("$proxyUrl$serviceUrl", body: {
         'identifiant': username,
         'code': code,
