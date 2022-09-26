@@ -44,7 +44,7 @@ class Aurion {
     await SecureStorage.set(SecureStorageKey.username, username);
     await SecureStorage.set(SecureStorageKey.password, password);
 
-    _client.login(username, password);
+    await _client.login(username, password);
   }
 
   static Future<void> init(String serviceUrl) async {
