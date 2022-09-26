@@ -37,10 +37,10 @@ class LoginPageState extends State<LoginPage> {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
 
-    SecureStorage.get(SecureStorageKey.Username).then((username) async {
+    SecureStorage.get(SecureStorageKey.username).then((username) async {
       if (username != null) {
         usernameController.text = username;
-        String? password = await SecureStorage.get(SecureStorageKey.Password);
+        String? password = await SecureStorage.get(SecureStorageKey.password);
         if (password != null) {
           passwordController.text = "Vous n'êtes pas sensé voir ça...";
           login(usernameController.text, password);

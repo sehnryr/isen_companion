@@ -2,16 +2,11 @@ import 'package:requests/requests.dart';
 
 import 'package:isen_ouest_companion/secure_storage.dart';
 
-class RecoverResponseCode {
-  final String _value;
-  const RecoverResponseCode._internal(this._value);
-  @override
-  toString() => 'RecoverResponseCode.$_value';
-
-  static const Error = RecoverResponseCode._internal('Error');
-  static const UsernameError = RecoverResponseCode._internal('UsernameError');
-  static const CodeError = RecoverResponseCode._internal('CodeError');
-  static const Success = RecoverResponseCode._internal('Success');
+enum RecoverResponseCode {
+  error,
+  usernameError,
+  codeError,
+  success,
 }
 
 class RecoverPassword {
@@ -26,7 +21,7 @@ class RecoverPassword {
   }) async {
     try {
       String proxyUrl =
-          await SecureStorage.get(SecureStorageKey.CORSProxy) ?? "";
+          await SecureStorage.get(SecureStorageKey.proxyUrl) ?? "";
       var response = await Requests.post("$proxyUrl$serviceUrl", body: {
         'identifiant': username,
         'code': code,
@@ -36,14 +31,14 @@ class RecoverPassword {
 
       if (RegExp(r"L'identifiant que vous avez saisi n'est pas valide !")
           .hasMatch(response.content())) {
-        return RecoverResponseCode.UsernameError;
+        return RecoverResponseCode.usernameError;
       } else if (RegExp(r"Le code que vous avez saisi n'est pas valide !")
           .hasMatch(response.content())) {
-        return RecoverResponseCode.CodeError;
+        return RecoverResponseCode.codeError;
       }
-      return RecoverResponseCode.Success;
+      return RecoverResponseCode.success;
     } catch (e) {
-      return RecoverResponseCode.Error;
+      return RecoverResponseCode.error;
     }
   }
 }

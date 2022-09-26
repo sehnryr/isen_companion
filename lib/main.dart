@@ -34,15 +34,16 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   void initState() {
-    SecureStorage.get(SecureStorageKey.CORSProxy)
-        .then((value) async => await SecureStorage.set(
-              SecureStorageKey.CORSProxy,
-              value ?? DefaultSettings.proxyUrl,
-            ));
-    SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) async {
-      String serviceUrl = value ?? DefaultSettings.serviceUrl;
-      await Aurion.init(serviceUrl);
-    });
+    () async {
+      String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
+      await SecureStorage.set(
+        SecureStorageKey.proxyUrl,
+        proxyUrl ?? (kIsWeb ? DefaultSettings.proxyUrl : ""),
+      );
+
+      String? serviceUrl = await SecureStorage.get(SecureStorageKey.serviceUrl);
+      await Aurion.init(serviceUrl ?? DefaultSettings.serviceUrl);
+    }.call();
     super.initState();
   }
 

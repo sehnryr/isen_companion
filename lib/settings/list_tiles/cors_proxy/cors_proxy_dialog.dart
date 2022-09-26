@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isen_ouest_companion/aurion.dart';
 
 import 'package:isen_ouest_companion/secure_storage.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_input.dart';
@@ -30,7 +31,8 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
 
   bool _proxyValidation(String proxy) {
     return proxy.isEmpty ||
-        RegExp(r'https?:\/\/[^\/]+\.\w{2,}\/?.*[\/?=]$').hasMatch(proxy);
+        RegExp(r'^https?:\/\/((\d+\.?){4}|(.+\.)*\w{2,})(:\d+)?\/([^\/]*[\/?=])*$')
+            .hasMatch(proxy);
   }
 
   @override
@@ -62,9 +64,15 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
                 proxyError = !_proxyValidation(widget.controller.text);
                 if (!proxyError) {
                   proxy = widget.controller.text.trim();
-                  SecureStorage.set(SecureStorageKey.CORSProxy, proxy)
-                      .then((value) {
-                    Navigator.pop(context, 'OK');
+                  SecureStorage.set(SecureStorageKey.proxyUrl, proxy)
+                      .then((value) async {
+                    String serviceUrl =
+                        await SecureStorage.get(SecureStorageKey.serviceUrl) ??
+                            "";
+                    await Aurion.init(serviceUrl);
+                    () {
+                      Navigator.pop(context, 'OK');
+                    }.call();
                   });
                 }
               },
