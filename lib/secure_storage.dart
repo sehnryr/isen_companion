@@ -1,15 +1,10 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class SecureStorageKey {
-  final _value;
-  const SecureStorageKey._internal(this._value);
-  @override
-  toString() => "SecureStorageKey.$_value";
-
-  static const Username = SecureStorageKey._internal("username");
-  static const Password = SecureStorageKey._internal("password");
-  static const CORSProxy = SecureStorageKey._internal("cors_proxy");
-  static const ServiceUrl = SecureStorageKey._internal("service_url");
+enum SecureStorageKey {
+  username,
+  password,
+  proxyUrl,
+  serviceUrl,
 }
 
 class SecureStorage {

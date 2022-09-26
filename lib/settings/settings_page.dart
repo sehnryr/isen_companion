@@ -20,11 +20,11 @@ class SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     proxyController = TextEditingController();
-    SecureStorage.get(SecureStorageKey.CORSProxy).then((value) => setState(() {
+    SecureStorage.get(SecureStorageKey.proxyUrl).then((value) => setState(() {
           proxyController.text = value!;
         }));
     serviceUrlController = TextEditingController();
-    SecureStorage.get(SecureStorageKey.ServiceUrl).then((value) => setState(() {
+    SecureStorage.get(SecureStorageKey.serviceUrl).then((value) => setState(() {
           serviceUrlController.text = value!;
         }));
     super.initState();
@@ -51,11 +51,11 @@ class SettingsPageState extends State<SettingsPage> {
             onClose: () =>
                 setState(() => proxyController.text = proxyController.text),
           ),
-          ServiceUrlTile(
-            controller: serviceUrlController,
-            onClose: () => setState(
-                () => serviceUrlController.text = serviceUrlController.text),
-          )
+          // ServiceUrlTile(
+          //   controller: serviceUrlController,
+          //   onClose: () => setState(
+          //       () => serviceUrlController.text = serviceUrlController.text),
+          // )
         ],
       ),
     );

@@ -90,14 +90,14 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
 
                 responseCode.then((value) {
                   switch (value) {
-                    case RecoverResponseCode.Error:
-                    case RecoverResponseCode.UsernameError:
+                    case RecoverResponseCode.error:
+                    case RecoverResponseCode.usernameError:
                       setState(() => usernameError = true);
                       break;
-                    case RecoverResponseCode.CodeError:
+                    case RecoverResponseCode.codeError:
                       setState(() => codeError = true);
                       break;
-                    case RecoverResponseCode.Success:
+                    case RecoverResponseCode.success:
                     default:
                       const snackBar = SnackBar(
                         behavior: SnackBarBehavior.floating,

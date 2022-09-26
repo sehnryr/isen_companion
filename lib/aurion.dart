@@ -41,16 +41,17 @@ class Aurion {
   static Future<void> login(String username, String password) async {
     await init(_serviceUrl);
 
-    await SecureStorage.set(SecureStorageKey.Username, username);
-    await SecureStorage.set(SecureStorageKey.Password, password);
+    await SecureStorage.set(SecureStorageKey.username, username);
+    await SecureStorage.set(SecureStorageKey.password, password);
 
-    return _client.login(username, password);
+    _client.login(username, password);
   }
 
   static Future<void> init(String serviceUrl) async {
-    await SecureStorage.set(SecureStorageKey.ServiceUrl, serviceUrl);
+    await SecureStorage.set(SecureStorageKey.serviceUrl, serviceUrl);
 
+    String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
     _serviceUrl = serviceUrl;
-    _client = IsenAurionClient(serviceUrl: _serviceUrl);
+    _client = IsenAurionClient(serviceUrl: "$proxyUrl$serviceUrl");
   }
 }

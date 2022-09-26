@@ -30,7 +30,7 @@ class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class ScheduleAppBarState extends State<ScheduleAppBar> {
   void disconnect() {
-    SecureStorage.delete(SecureStorageKey.Password)
+    SecureStorage.delete(SecureStorageKey.password)
         .then((_) => Navigator.of(context).pushReplacement(createRoute(
               const LoginPage(),
               Direction.fromLeft,
