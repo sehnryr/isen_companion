@@ -14,7 +14,7 @@ dependencies:
     intl: ^0.17.0
     cryptography: ^2.0.5
     cryptography_flutter: ^2.0.2
-    isen_aurion_client: ^1.2.1
+    isen_aurion_client: ^1.2.2
     flutter_svg: ^1.1.4
     requests: ^4.7.0
     universal_html: ^2.0.8
