@@ -1,11 +1,11 @@
 {
-  "name": "isen_ouest_companion",
-  "short_name": "isen_ouest_companion",
+  "name": "ISEN Ouest Companion",
+  "short_name": "ISEN Companion",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#4D4955",
-  "description": "A new Flutter project.",
+  "description": "Companion app for the ISEN students",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
