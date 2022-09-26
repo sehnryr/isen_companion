@@ -397,9 +397,11 @@ packages:
   isen_aurion_client:
     dependency: "direct main"
     description:
-      name: isen_aurion_client
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: fix-breaking-import-81
+      resolved-ref: "82514bb7a1685a388fbc3c6ffcecc06ff8727db8"
+      url: "https://github.com/sehnryr/isen_aurion_client.git"
+    source: git
     version: "1.2.0"
   js:
     dependency: transitive
@@ -537,9 +539,11 @@ packages:
   requests:
     dependency: "direct main"
     description:
-      name: requests
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: fix-breaking-import-81
+      resolved-ref: f34bfd200eab4879f0a0e02ace3a583360a5d545
+      url: "https://github.com/jossef/requests.git"
+    source: git
     version: "4.6.0"
   route_creator:
     dependency: "direct main"
