@@ -38,7 +38,6 @@ dev_dependencies:
 
 flutter_icons:
     android: true
-    ios: true
     image_path: "assets/launcher_icon/icon.png" # Provide icon for ios
     adaptive_icon_background: "assets/launcher_icon/background-layer.png"
     adaptive_icon_foreground: "assets/launcher_icon/foreground-layer.png"
