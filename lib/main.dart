@@ -58,7 +58,8 @@ class MyAppState extends State<MyApp> {
         }
       },
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'ISEN Ouest Companion',
+        locale: const Locale('fr', 'FR'),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: const Color(0xFF6D6875),
