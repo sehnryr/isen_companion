@@ -12,6 +12,7 @@ class ScheduleWeekTable extends StatelessWidget {
   final CalendarFormat calendarFormat;
   final void Function(DateTime, DateTime) onDaySelected;
   final void Function(DateTime) onPageChanged;
+  final List<dynamic> Function(DateTime)? eventLoader;
 
   const ScheduleWeekTable(
       {Key? key,
@@ -23,7 +24,8 @@ class ScheduleWeekTable extends StatelessWidget {
       required this.startingDayOfWeek,
       required this.calendarFormat,
       required this.onDaySelected,
-      required this.onPageChanged})
+      required this.onPageChanged,
+      required this.eventLoader})
       : super(key: key);
 
   @override
@@ -57,6 +59,7 @@ class ScheduleWeekTable extends StatelessWidget {
           ),
         ),
         onPageChanged: onPageChanged,
+        eventLoader: eventLoader,
       ),
     );
   }
