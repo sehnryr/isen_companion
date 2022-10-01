@@ -1,4 +1,7 @@
+import 'dart:collection';
+
 import 'package:isen_aurion_client/isen_aurion_client.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import 'package:isen_ouest_companion/secure_storage.dart';
 
@@ -37,6 +40,12 @@ class Event {
 
   @override
   String toString() => subject;
+
+  DateTime get day => DateTime(
+        start.year,
+        start.month,
+        start.day,
+      );
 
   /// Gets the [EventType] of a [String].
   static EventType mapType(String rawType) {
@@ -88,12 +97,42 @@ class Aurion {
     return _client.defaultEnd;
   }
 
-  static Future<List<Map<String, dynamic>>> getUserSchedule(
-      {DateTime? start, DateTime? end}) {
-    return _client.getUserSchedule(
+  static Future<LinkedHashMap<DateTime, List<Event>>> getUserSchedule(
+      {DateTime? start, DateTime? end}) async {
+    List<Map<String, dynamic>> schedule = await _client.getUserSchedule(
       start: start,
       end: end,
     );
+
+    LinkedHashMap<DateTime, List<Event>> events =
+        LinkedHashMap<DateTime, List<Event>>(
+      equals: isSameDay,
+      hashCode: getHashCode,
+    );
+
+    for (var element in schedule) {
+      Event event = Event(
+        id: element['id'],
+        type: Event.mapType(element['type']),
+        start: DateTime.fromMillisecondsSinceEpoch(element['start']),
+        end: DateTime.fromMillisecondsSinceEpoch(element['end']),
+        room: element['room'],
+        subject: element['subject'],
+        chapter: element['chapter'],
+        participants: element['participants'],
+      );
+      DateTime day = event.day;
+
+      if (events.containsKey(day)) {
+        events[day]!.add(event);
+      } else {
+        events.addAll({
+          day: [event]
+        });
+      }
+    }
+
+    return events;
   }
 
   static Future<void> login(String username, String password) async {
@@ -113,3 +152,6 @@ class Aurion {
     _client = IsenAurionClient(serviceUrl: "$proxyUrl$serviceUrl");
   }
 }
+
+int getHashCode(DateTime key) =>
+    key.day * 1000000 + key.month * 10000 + key.year;
