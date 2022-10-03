@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud.dart';
-import 'package:universal_html/html.dart';
+import 'package:universal_html/html.dart' show window;
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
