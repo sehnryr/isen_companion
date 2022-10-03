@@ -5,7 +5,7 @@ import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 
 class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
   final void Function() showCalendarState;
@@ -30,7 +30,7 @@ class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class ScheduleAppBarState extends State<ScheduleAppBar> {
   void disconnect() {
-    SecureStorage.delete(SecureStorageKey.password)
+    Storage.delete(StorageKey.password)
         .then((_) => Navigator.of(context).pushReplacement(createRoute(
               const LoginPage(),
               Direction.fromLeft,

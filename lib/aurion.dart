@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:isen_aurion_client/isen_aurion_client.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 
 /// Possible event types
 enum EventType {
@@ -138,16 +138,16 @@ class Aurion {
   static Future<void> login(String username, String password) async {
     await init(_serviceUrl);
 
-    await SecureStorage.set(SecureStorageKey.username, username);
-    await SecureStorage.set(SecureStorageKey.password, password);
+    await Storage.set(StorageKey.username, username);
+    await Storage.set(StorageKey.password, password);
 
     await _client.login(username, password);
   }
 
   static Future<void> init(String serviceUrl) async {
-    await SecureStorage.set(SecureStorageKey.serviceUrl, serviceUrl);
+    await Storage.set(StorageKey.serviceUrl, serviceUrl);
 
-    String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
+    String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
     _serviceUrl = serviceUrl;
     _client = IsenAurionClient(serviceUrl: "$proxyUrl$serviceUrl");
   }
