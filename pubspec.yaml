@@ -16,7 +16,7 @@ dependencies:
     flutter_svg: ^1.1.4
     requests: ^4.7.0
     universal_html: ^2.0.8
-    flutter_secure_storage: ^6.0.0
+    encrypted_shared_preferences: ^3.0.1
     table_calendar: ^3.0.7
 
     # personal packages

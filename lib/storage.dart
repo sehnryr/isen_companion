@@ -1,4 +1,4 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:encrypted_shared_preferences/encrypted_shared_preferences.dart';
 
 enum StorageKey {
   username,
@@ -8,17 +8,19 @@ enum StorageKey {
 }
 
 class Storage {
-  static const FlutterSecureStorage _storage = FlutterSecureStorage();
+  static final EncryptedSharedPreferences _storage =
+      EncryptedSharedPreferences();
 
   static Future<String?> get(StorageKey key) async {
-    return await _storage.read(key: key.toString());
+    String value = await _storage.getString(key.toString());
+    return value.isNotEmpty ? value : null;
   }
 
-  static Future<void> set(StorageKey key, String value) async {
-    await _storage.write(key: key.toString(), value: value);
+  static Future<bool> set(StorageKey key, String value) async {
+    return await _storage.setString(key.toString(), value);
   }
 
-  static Future<void> delete(StorageKey key) async {
-    await _storage.delete(key: key.toString());
+  static Future<bool> delete(StorageKey key) async {
+    return await _storage.remove(key.toString());
   }
 }
