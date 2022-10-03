@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:cryptography_flutter/cryptography_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:universal_html/html.dart';
@@ -14,9 +13,6 @@ import 'package:isen_ouest_companion/storage.dart';
 import 'package:isen_ouest_companion/settings/settings_constants.dart';
 
 void main() async {
-  // Enable Flutter cryptography
-  FlutterCryptography.enable();
-
   await initializeDateFormatting();
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
