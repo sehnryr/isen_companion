@@ -17,7 +17,7 @@ import 'package:isen_ouest_companion/login/login_icon.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
 import 'package:isen_ouest_companion/schedule/schedule_page.dart';
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -37,10 +37,10 @@ class LoginPageState extends State<LoginPage> {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
 
-    SecureStorage.get(SecureStorageKey.username).then((username) async {
+    Storage.get(StorageKey.username).then((username) async {
       if (username != null) {
         usernameController.text = username;
-        String? password = await SecureStorage.get(SecureStorageKey.password);
+        String? password = await Storage.get(StorageKey.password);
         if (password != null) {
           passwordController.text = "Vous n'êtes pas sensé voir ça...";
           login(usernameController.text, password);

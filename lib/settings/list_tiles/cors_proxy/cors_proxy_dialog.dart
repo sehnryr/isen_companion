@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isen_ouest_companion/aurion.dart';
 
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_input.dart';
 
 class CORSProxyDialog extends StatefulWidget {
@@ -64,11 +64,9 @@ class CORSProxyDialogState extends State<CORSProxyDialog> {
                 proxyError = !_proxyValidation(widget.controller.text);
                 if (!proxyError) {
                   proxy = widget.controller.text.trim();
-                  SecureStorage.set(SecureStorageKey.proxyUrl, proxy)
-                      .then((value) async {
+                  Storage.set(StorageKey.proxyUrl, proxy).then((value) async {
                     String serviceUrl =
-                        await SecureStorage.get(SecureStorageKey.serviceUrl) ??
-                            "";
+                        await Storage.get(StorageKey.serviceUrl) ?? "";
                     await Aurion.init(serviceUrl);
                     () {
                       Navigator.pop(context, 'OK');

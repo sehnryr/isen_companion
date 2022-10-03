@@ -1,6 +1,6 @@
 import 'package:requests/requests.dart';
 
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 
 enum RecoverResponseCode {
   error,
@@ -20,7 +20,7 @@ class RecoverPassword {
     required int code,
   }) async {
     try {
-      String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
+      String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
       var response = await Requests.post("$proxyUrl$serviceUrl", body: {
         'identifiant': username,
         'code': code,

@@ -10,7 +10,7 @@ import 'package:universal_html/html.dart';
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
-import 'package:isen_ouest_companion/secure_storage.dart';
+import 'package:isen_ouest_companion/storage.dart';
 import 'package:isen_ouest_companion/settings/settings_constants.dart';
 
 void main() async {
@@ -35,13 +35,13 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     () async {
-      String? proxyUrl = await SecureStorage.get(SecureStorageKey.proxyUrl);
-      await SecureStorage.set(
-        SecureStorageKey.proxyUrl,
+      String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
+      await Storage.set(
+        StorageKey.proxyUrl,
         proxyUrl ?? (kIsWeb ? DefaultSettings.proxyUrl : ""),
       );
 
-      String? serviceUrl = await SecureStorage.get(SecureStorageKey.serviceUrl);
+      String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
       await Aurion.init(serviceUrl ?? DefaultSettings.serviceUrl);
     }.call();
     super.initState();
