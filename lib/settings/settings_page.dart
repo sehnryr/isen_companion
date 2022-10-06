@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:isen_ouest_companion/storage.dart';
-import 'package:isen_ouest_companion/settings/settings_constants.dart';
 import 'package:isen_ouest_companion/settings/settings_app_bar.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_tile.dart';
 import 'package:isen_ouest_companion/settings/list_tiles/service_url/service_url_tile.dart';
