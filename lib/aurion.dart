@@ -15,26 +15,27 @@ class Aurion {
 
   /// Get the default start date for the schedule.
   /// 2 weeks before the current week.
-  static DateTime get defaultStart {
-    return _client.defaultStart;
-  }
+  static DateTime get defaultStart => _client.defaultStart;
 
   /// Get the default end date for the schedule.
   /// Last week of january.
-  static DateTime get defaultEnd {
-    return _client.defaultEnd;
-  }
+  static DateTime get defaultEnd => _client.defaultEnd;
 
   /// Parse the schedule from [IsenAurionClient.getSchedule] and
   /// [IsenAurionClient.getUserSchedule] to a [LinkedHashMap]
   /// of [DateTime] to [List<Event>].
   static LinkedHashMap<DateTime, List<Event>> parseSchedule(
       List<Event> schedule) {
+    bool isSameDay(DateTime a, DateTime b) =>
+        a.year == b.year && a.month == b.month && a.day == b.day;
+
+    int getHashCode(DateTime date) =>
+        date.year * 10000 + date.month * 100 + date.day;
+
     LinkedHashMap<DateTime, List<Event>> events =
         LinkedHashMap<DateTime, List<Event>>(
-      equals: (a, b) =>
-          a.year == b.year && a.month == b.month && a.day == b.day,
-      hashCode: (a) => a.year * 10000 + a.month * 100 + a.day,
+      equals: isSameDay,
+      hashCode: getHashCode,
     );
 
     for (Event event in schedule) {
