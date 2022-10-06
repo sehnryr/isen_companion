@@ -27,7 +27,7 @@ jobs:
       run: flutter pub run flutter_launcher_icons:main
 
     - name: Build release project
-      run: flutter build web --release --base-href="/${{ github.event.repository.name }}/" --web-renderer canvaskit
+      run: flutter build web --release --web-renderer canvaskit
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.4.0
