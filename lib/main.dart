@@ -8,9 +8,9 @@ import 'package:universal_html/html.dart' show window;
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
+import 'package:isen_ouest_companion/config.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
 import 'package:isen_ouest_companion/storage.dart';
-import 'package:isen_ouest_companion/settings/settings_constants.dart';
 
 void main() async {
   await initializeDateFormatting();
@@ -34,11 +34,11 @@ class MyAppState extends State<MyApp> {
       String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
       await Storage.set(
         StorageKey.proxyUrl,
-        proxyUrl ?? (kIsWeb ? DefaultSettings.proxyUrl : ""),
+        proxyUrl ?? (kIsWeb ? Config.proxyUrl : ""),
       );
 
       String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
-      await Aurion.init(serviceUrl ?? DefaultSettings.serviceUrl);
+      await Aurion.init(serviceUrl ?? Config.serviceUrl);
     }.call();
     super.initState();
   }
