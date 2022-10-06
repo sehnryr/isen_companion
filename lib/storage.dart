@@ -12,8 +12,7 @@ class Storage {
       EncryptedSharedPreferences();
 
   static Future<String?> get(StorageKey key) async {
-    String value = await _storage.getString(key.toString());
-    return value.isNotEmpty ? value : null;
+    return await _storage.getString(key.toString());
   }
 
   static Future<bool> set(StorageKey key, String value) async {

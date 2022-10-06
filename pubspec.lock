@@ -372,7 +372,7 @@ packages:
       name: isen_aurion_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.3"
+    version: "2.2.0"
   js:
     dependency: transitive
     description:

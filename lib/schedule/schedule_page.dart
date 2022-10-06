@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:isen_aurion_client/event.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -152,13 +153,15 @@ class SchedulePageState extends State<SchedulePage>
                   itemCount: value.length,
                   itemBuilder: (context, index) {
                     Event event = value[index];
-                    String startHour =
-                        event.start.hour.toString().padLeft(2, '0');
+
+                    DateTime start = event.start.toLocal();
+                    String startHour = start.hour.toString().padLeft(2, '0');
                     String startMinute =
-                        event.start.minute.toString().padLeft(2, '0');
-                    String endHour = event.end.hour.toString().padLeft(2, '0');
-                    String endMinute =
-                        event.end.minute.toString().padLeft(2, '0');
+                        start.minute.toString().padLeft(2, '0');
+
+                    DateTime end = event.end.toLocal();
+                    String endHour = end.hour.toString().padLeft(2, '0');
+                    String endMinute = end.minute.toString().padLeft(2, '0');
                     String time =
                         "$startHour:$startMinute - $endHour:$endMinute";
 
