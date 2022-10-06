@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:isen_aurion_client/client.dart';
 import 'package:isen_aurion_client/event.dart';
+import 'package:isen_aurion_client/error.dart';
 
 import 'package:isen_ouest_companion/storage.dart';
 
@@ -9,21 +10,6 @@ class Aurion {
   static late String _serviceUrl;
 
   static late IsenAurionClient _client;
-
-  // static Future<List<Map<String, dynamic>>> getSchedule(
-  //     {required String groupId,
-  //     List<Map>? path,
-  //     List<Map>? options,
-  //     DateTime? start,
-  //     DateTime? end}) {
-  //   return client.getSchedule(
-  //     groupId: groupId,
-  //     path: path,
-  //     options: options,
-  //     start: start,
-  //     end: end,
-  //   );
-  // }
 
   static DateTime get defaultStart {
     return _client.defaultStart;
@@ -51,6 +37,18 @@ class Aurion {
     }
 
     return events;
+  }
+
+  /// Get the schedule with all the options checked by default.
+  ///
+  /// Throws [ParameterNotFound] if Aurion's schedule is not in the
+  /// expected format.
+  static Future<LinkedHashMap<DateTime, List<Event>>> getSchedule({
+    required String groupId,
+  }) async {
+    List<Event> schedule = await _client.getSchedule(groupId: groupId);
+
+    return parseSchedule(schedule);
   }
 
   static Future<LinkedHashMap<DateTime, List<Event>>> getUserSchedule() async {
