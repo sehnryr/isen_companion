@@ -7,18 +7,27 @@ import 'package:isen_aurion_client/error.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 class Aurion {
+  // The service url
   static late String _serviceUrl;
 
+  // The Aurion client
   static late IsenAurionClient _client;
 
+  /// Get the default start date for the schedule.
+  /// 2 weeks before the current week.
   static DateTime get defaultStart {
     return _client.defaultStart;
   }
 
+  /// Get the default end date for the schedule.
+  /// Last week of january.
   static DateTime get defaultEnd {
     return _client.defaultEnd;
   }
 
+  /// Parse the schedule from [IsenAurionClient.getSchedule] and
+  /// [IsenAurionClient.getUserSchedule] to a [LinkedHashMap]
+  /// of [DateTime] to [List<Event>].
   static LinkedHashMap<DateTime, List<Event>> parseSchedule(
       List<Event> schedule) {
     LinkedHashMap<DateTime, List<Event>> events =
@@ -51,6 +60,10 @@ class Aurion {
     return parseSchedule(schedule);
   }
 
+  /// Get the user schedule with all the options checked by default.
+  ///
+  /// Throws [ParameterNotFound] if Aurion's schedule is not in the
+  /// expected format.
   static Future<LinkedHashMap<DateTime, List<Event>>> getUserSchedule() async {
     List<Event> schedule = await _client.getUserSchedule();
 
