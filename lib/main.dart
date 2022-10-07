@@ -32,15 +32,11 @@ class MyAppState extends State<MyApp> {
   void initState() {
     () async {
       String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
-      proxyUrl = proxyUrl != null && proxyUrl.isNotEmpty
-          ? proxyUrl
-          : (kIsWeb ? Config.proxyUrl : "");
+      proxyUrl = proxyUrl ?? (kIsWeb ? Config.proxyUrl : "");
       await Storage.set(StorageKey.proxyUrl, proxyUrl);
 
       String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
-      serviceUrl = serviceUrl != null && serviceUrl.isNotEmpty
-          ? serviceUrl
-          : Config.serviceUrl;
+      serviceUrl = serviceUrl ?? Config.serviceUrl;
       await Aurion.init(serviceUrl);
     }.call();
     super.initState();
