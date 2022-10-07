@@ -15,7 +15,8 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       foregroundColor: Theme.of(context).colorScheme.primary,
       leading: IconButton(
-        onPressed: () => context.pop(),
+        onPressed: () =>
+            context.canPop() ? context.pop() : context.go('/login'),
         icon: const Icon(Icons.arrow_back),
       ),
       title: const Text("Paramètres"),
