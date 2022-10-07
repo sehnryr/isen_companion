@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
-import 'package:isen_ouest_companion/login/login_page.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -31,10 +29,7 @@ class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
 class ScheduleAppBarState extends State<ScheduleAppBar> {
   void disconnect() {
     Storage.delete(StorageKey.password)
-        .then((_) => Navigator.of(context).pushReplacement(createRoute(
-              const LoginPage(),
-              Direction.fromLeft,
-            )));
+        .then((_) => Navigator.of(context).pushReplacementNamed('/login'));
   }
 
   @override

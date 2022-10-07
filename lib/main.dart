@@ -11,6 +11,9 @@ import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 import 'package:isen_ouest_companion/config.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
+import 'package:isen_ouest_companion/schedule/schedule_page.dart';
+import 'package:isen_ouest_companion/settings/settings_page.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 void main() async {
@@ -91,6 +94,20 @@ class MyAppState extends State<MyApp> {
               ? '-apple-system'
               : null,
         ),
+        routes: {
+          '/login': (context) => const ProgressHUD(
+                child: LoginPage(),
+              ),
+          '/schedule': (context) => const ProgressHUD(
+                child: SchedulePage(),
+              ),
+          '/settings': (context) => const ProgressHUD(
+                child: SettingsPage(),
+              ),
+          '/recover': (context) => const ProgressHUD(
+                child: RecoverPasswordPage(),
+              ),
+        },
         home: Builder(builder: (context) {
           return const ProgressHUD(child: LoginPage());
         }),
