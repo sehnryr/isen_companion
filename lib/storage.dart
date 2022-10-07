@@ -12,7 +12,10 @@ class Storage {
       EncryptedSharedPreferences();
 
   static Future<String?> get(StorageKey key) async {
-    return await _storage.getString(key.toString());
+    var prefs = await _storage.getInstance();
+    return prefs.containsKey(key.toString())
+        ? await _storage.getString(key.toString())
+        : null;
   }
 
   static Future<bool> set(StorageKey key, String value) async {
