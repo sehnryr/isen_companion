@@ -94,6 +94,7 @@ class MyAppState extends State<MyApp> {
               ? '-apple-system'
               : null,
         ),
+        initialRoute: '/login',
         routes: {
           '/login': (context) => const ProgressHUD(
                 child: LoginPage(),
@@ -108,9 +109,6 @@ class MyAppState extends State<MyApp> {
                 child: RecoverPasswordPage(),
               ),
         },
-        home: Builder(builder: (context) {
-          return const ProgressHUD(child: LoginPage());
-        }),
       ),
     );
   }
