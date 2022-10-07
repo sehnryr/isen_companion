@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
       await Aurion.login(username, password)
           .timeout(const Duration(seconds: 20));
 
-      context.replace('/schedule');
+      context.go('/schedule');
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
