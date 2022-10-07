@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:isen_aurion_client/error.dart';
+import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
 
 import 'package:isen_ouest_companion/aurion.dart';
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
       await Aurion.login(username, password)
           .timeout(const Duration(seconds: 20));
 
-      Navigator.of(context).pushReplacementNamed('/schedule');
+      context.replace('/schedule');
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -153,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     passwordError = passwordController.text.isNotEmpty;
                   }
                 });
-                Navigator.of(context).pushNamed('/recover');
+                context.push('/recover');
               }),
             ],
           ),

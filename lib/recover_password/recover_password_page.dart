@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
 
 import 'package:isen_ouest_companion/base/base_constants.dart';
@@ -104,7 +106,7 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
                         content: Text("Un email vous à été envoyé."),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      Navigator.of(context).pop();
+                      context.pop();
                       break;
                   }
                 });

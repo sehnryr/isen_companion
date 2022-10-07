@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:universal_html/html.dart' show window;
 
@@ -60,7 +61,8 @@ class _MyAppState extends State<MyApp> {
           FocusManager.instance.primaryFocus?.unfocus();
         }
       },
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: router,
         title: 'ISEN Ouest Companion',
         locale: const Locale('fr', 'FR'),
         theme: ThemeData(
@@ -94,22 +96,36 @@ class _MyAppState extends State<MyApp> {
               ? '-apple-system'
               : null,
         ),
-        initialRoute: '/login',
-        routes: {
-          '/login': (context) => const ProgressHUD(
-                child: LoginPage(),
-              ),
-          '/schedule': (context) => const ProgressHUD(
-                child: SchedulePage(),
-              ),
-          '/settings': (context) => const ProgressHUD(
-                child: SettingsPage(),
-              ),
-          '/recover': (context) => const ProgressHUD(
-                child: RecoverPasswordPage(),
-              ),
-        },
       ),
     );
   }
+
+  final GoRouter router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        redirect: (context, state) {
+          return '/login';
+        },
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const ProgressHUD(child: LoginPage()),
+      ),
+      GoRoute(
+        path: '/schedule',
+        builder: (context, state) => const ProgressHUD(child: SchedulePage()),
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const ProgressHUD(child: SettingsPage()),
+      ),
+      GoRoute(
+        path: '/recover',
+        builder: (context, state) =>
+            const ProgressHUD(child: RecoverPasswordPage()),
+      ),
+    ],
+    initialLocation: '/login',
+  );
 }

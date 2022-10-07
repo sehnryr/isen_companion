@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 
 class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -14,7 +16,7 @@ class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
       foregroundColor: Theme.of(context).colorScheme.primary,
       actions: [
         IconButton(
-          onPressed: () => Navigator.of(context).pushNamed('/settings'),
+          onPressed: () => context.push('/settings'),
           icon: const Icon(Icons.settings),
         )
       ],
