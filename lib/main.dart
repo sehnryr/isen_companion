@@ -108,10 +108,10 @@ class _MyAppState extends State<MyApp> {
         target: const SchedulePage(),
         direction: Direction.fromRight,
         redirect: (context, state) async {
-          if (await Storage.get(StorageKey.password) != null) {
-            return state.location;
+          if (await Storage.get(StorageKey.password) == null) {
+            return '/login';
           }
-          return '/login';
+          return null;
         },
       ),
       SlideOrGoRoute(
