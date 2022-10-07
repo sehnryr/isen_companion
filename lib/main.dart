@@ -115,6 +115,12 @@ class _MyAppState extends State<MyApp> {
       GoRoute(
         path: '/schedule',
         builder: (context, state) => const ProgressHUD(child: SchedulePage()),
+        redirect: (context, state) async {
+          if (await Storage.get(StorageKey.password) != null) {
+            return state.location;
+          }
+          return '/login';
+        },
       ),
       GoRoute(
         path: '/settings',
