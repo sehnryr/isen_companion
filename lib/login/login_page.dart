@@ -20,10 +20,10 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  LoginPageState createState() => LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   late TextEditingController usernameController;
   late TextEditingController passwordController;
   bool usernameError = false;

@@ -15,10 +15,10 @@ class CORSProxyDialog extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  CORSProxyDialogState createState() => CORSProxyDialogState();
+  State<CORSProxyDialog> createState() => _CORSProxyDialogState();
 }
 
-class CORSProxyDialogState extends State<CORSProxyDialog> {
+class _CORSProxyDialogState extends State<CORSProxyDialog> {
   late String proxy;
   late bool proxyError;
 

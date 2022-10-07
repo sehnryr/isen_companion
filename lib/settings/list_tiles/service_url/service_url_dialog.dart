@@ -14,10 +14,10 @@ class ServiceUrlDialog extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  ServiceUrlDialogState createState() => ServiceUrlDialogState();
+  State<ServiceUrlDialog> createState() => _ServiceUrlDialogState();
 }
 
-class ServiceUrlDialogState extends State<ServiceUrlDialog> {
+class _ServiceUrlDialogState extends State<ServiceUrlDialog> {
   late String text;
   late bool error;
 

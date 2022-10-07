@@ -31,10 +31,10 @@ class BaseInput extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  BaseInputState createState() => BaseInputState();
+  State<BaseInput> createState() => _BaseInputState();
 }
 
-class BaseInputState extends State<BaseInput> {
+class _BaseInputState extends State<BaseInput> {
   final FocusNode _focusNode = FocusNode();
   bool _showPassword = false;
 

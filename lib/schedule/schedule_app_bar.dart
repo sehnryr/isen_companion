@@ -20,13 +20,13 @@ class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  ScheduleAppBarState createState() => ScheduleAppBarState();
+  State<ScheduleAppBar> createState() => _ScheduleAppBarState();
 
   @override
   Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
 }
 
-class ScheduleAppBarState extends State<ScheduleAppBar> {
+class _ScheduleAppBarState extends State<ScheduleAppBar> {
   void disconnect() {
     Storage.delete(StorageKey.password)
         .then((_) => Navigator.of(context).pushReplacementNamed('/login'));

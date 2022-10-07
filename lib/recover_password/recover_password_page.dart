@@ -16,10 +16,10 @@ class RecoverPasswordPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  RecoverPasswordPageState createState() => RecoverPasswordPageState();
+  State<RecoverPasswordPage> createState() => _RecoverPasswordPageState();
 }
 
-class RecoverPasswordPageState extends State<RecoverPasswordPage> {
+class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
   late TextEditingController usernameController;
   late TextEditingController codeController;
   bool usernameError = false;
