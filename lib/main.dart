@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:universal_html/html.dart' show window;
 
@@ -18,6 +19,10 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
   runApp(const MyApp());
+
+  if (kIsWeb) {
+    setUrlStrategy(PathUrlStrategy());
+  }
 }
 
 class MyApp extends StatefulWidget {
