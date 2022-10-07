@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
-import 'package:progress_hud/progress_hud.dart';
+import 'package:custom_go_route/slide_or_go_route.dart';
 import 'package:universal_html/html.dart' show window;
 
 import 'package:isen_ouest_companion/aurion.dart';
@@ -53,15 +53,7 @@ class _MyAppState extends State<MyApp> {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          FocusManager.instance.primaryFocus?.unfocus();
-        }
-      },
-      child: MaterialApp.router(
+  Widget build(BuildContext context) => MaterialApp.router(
         routerConfig: router,
         title: 'ISEN Ouest Companion',
         locale: const Locale('fr', 'FR'),
@@ -96,9 +88,7 @@ class _MyAppState extends State<MyApp> {
               ? '-apple-system'
               : null,
         ),
-      ),
-    );
-  }
+      );
 
   final GoRouter router = GoRouter(
     routes: [
@@ -108,13 +98,15 @@ class _MyAppState extends State<MyApp> {
           return '/login';
         },
       ),
-      GoRoute(
+      SlideOrGoRoute(
         path: '/login',
-        builder: (context, state) => const ProgressHUD(child: LoginPage()),
+        target: const LoginPage(),
+        direction: Direction.fromLeft,
       ),
-      GoRoute(
+      SlideOrGoRoute(
         path: '/schedule',
-        builder: (context, state) => const ProgressHUD(child: SchedulePage()),
+        target: const SchedulePage(),
+        direction: Direction.fromRight,
         redirect: (context, state) async {
           if (await Storage.get(StorageKey.password) != null) {
             return state.location;
@@ -122,14 +114,15 @@ class _MyAppState extends State<MyApp> {
           return '/login';
         },
       ),
-      GoRoute(
+      SlideOrGoRoute(
         path: '/settings',
-        builder: (context, state) => const ProgressHUD(child: SettingsPage()),
+        target: const SettingsPage(),
+        direction: Direction.fromRight,
       ),
-      GoRoute(
+      SlideOrGoRoute(
         path: '/recover',
-        builder: (context, state) =>
-            const ProgressHUD(child: RecoverPasswordPage()),
+        target: const RecoverPasswordPage(),
+        direction: Direction.fromBottom,
       ),
     ],
     initialLocation: '/login',
