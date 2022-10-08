@@ -10,3 +10,7 @@ Cette application simplifie l'accès aux services de l'ISEN Ouest aux étudiants
 Application web : [isen.melois.dev][website-url]
 
 [website-url]: https://isen.melois.dev/
+
+## Contact
+
+Pour tout problème, suggestion ou autre, vous pouvez me contacter via Discord [Sehnryr#0001](https://discord.com/users/230563291146092545) (ou par email [youn@melois.dev](mailto:youn@melois.dev))
