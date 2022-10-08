@@ -7,6 +7,6 @@
 
 This companion app will follow the student throughout its scolarity. It will permit to consult its schedule easily and has many more features.
 
-[View the deployed app][website-url]
+Application web : [isen.melois.dev][website-url]
 
 [website-url]: https://isen.melois.dev/
