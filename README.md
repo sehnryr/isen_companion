@@ -5,7 +5,7 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sehnryr/isen_ouest_companion)](#)
 [![GitHub](https://img.shields.io/github/license/sehnryr/isen_ouest_companion)](#)
 
-This companion app will follow the student throughout its scolarity. It will permit to consult its schedule easily and has many more features.
+Cette application simplifie l'accès aux services de l'ISEN Ouest aux étudiants (et enseignants).
 
 Application web : [isen.melois.dev][website-url]
 
