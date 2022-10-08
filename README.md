@@ -5,9 +5,11 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/sehnryr/isen_ouest_companion)](#)
 [![GitHub](https://img.shields.io/github/license/sehnryr/isen_ouest_companion)](#)
 
-Cette application simplifie l'accès aux services de l'ISEN Ouest aux étudiants (et enseignants).
-
 Application web : [isen.melois.dev][website-url]
+
+Cette application simplifie l'accès aux services de l'ISEN Ouest aux étudiants (et enseignants). (Aurion pour l'instant)
+
+De nombreux étudiants peuvent témoigner qu'Aurion n'est pas assez ergonomique et c'est pourquoi certains ont pris l'initiative de l'améliorer. [Scorpion](https://github.com/LiamAbyss/Scorpion) codé en Java, [PyAurion](https://github.com/MylowMntr/PyAurion) en Python, [Aurion-Planning_to_ICS](https://github.com/Victor-Loos/Aurion-Planning_to_ICS) également en Python, [Api Aurion](https://github.com/nicolegrimpeur/apiAurion) en Javascript sont quelques-uns des nombreux projets entrepris par les étudiants. C'est pour cela que moi aussi j'ai décidé de prendre du temps pour l'améliorer.
 
 [website-url]: https://isen.melois.dev/
 
