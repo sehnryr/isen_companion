@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:custom_go_route/slide_or_go_route.dart';
 import 'package:universal_html/html.dart' show window;
+import 'package:url_strategy/url_strategy.dart';
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
@@ -22,11 +22,8 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
+  setPathUrlStrategy();
   runApp(const MyApp());
-
-  if (kIsWeb) {
-    setUrlStrategy(PathUrlStrategy());
-  }
 }
 
 class MyApp extends StatefulWidget {
