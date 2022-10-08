@@ -36,6 +36,7 @@ jobs:
         production-branch: master
         deploy-message: "Deployed by GitHub Actions"
         github-token: ${{ secrets.DEPLOY_TOKEN }}
+        netlify-config-path: build/web/netlify.toml
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
