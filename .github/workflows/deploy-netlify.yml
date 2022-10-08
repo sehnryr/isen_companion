@@ -29,8 +29,13 @@ jobs:
     - name: Build release project
       run: flutter build web --release --web-renderer canvaskit
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.4.0
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v1.2.3
       with:
-        token: ${{ secrets.DEPLOY_TOKEN }}
-        folder: build/web
+        publish-dir: build/web
+        production-branch: master
+        deploy-message: "Deployed by GitHub Actions"
+        github-token: ${{ secrets.DEPLOY_TOKEN }}
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
