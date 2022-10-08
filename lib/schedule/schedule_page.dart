@@ -13,10 +13,10 @@ class SchedulePage extends StatefulWidget {
   const SchedulePage({Key? key}) : super(key: key);
 
   @override
-  SchedulePageState createState() => SchedulePageState();
+  State<SchedulePage> createState() => _SchedulePageState();
 }
 
-class SchedulePageState extends State<SchedulePage>
+class _SchedulePageState extends State<SchedulePage>
     with TickerProviderStateMixin {
   late final AnimationController animationController;
   var schedule = {};

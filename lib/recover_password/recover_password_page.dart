@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
 
 import 'package:isen_ouest_companion/base/base_constants.dart';
@@ -16,10 +18,10 @@ class RecoverPasswordPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  RecoverPasswordPageState createState() => RecoverPasswordPageState();
+  State<RecoverPasswordPage> createState() => _RecoverPasswordPageState();
 }
 
-class RecoverPasswordPageState extends State<RecoverPasswordPage> {
+class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
   late TextEditingController usernameController;
   late TextEditingController codeController;
   bool usernameError = false;
@@ -104,7 +106,7 @@ class RecoverPasswordPageState extends State<RecoverPasswordPage> {
                         content: Text("Un email vous à été envoyé."),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      Navigator.of(context).pop();
+                      context.pop();
                       break;
                   }
                 });

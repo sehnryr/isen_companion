@@ -9,10 +9,10 @@ class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  SettingsPageState createState() => SettingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class SettingsPageState extends State<SettingsPage> {
+class _SettingsPageState extends State<SettingsPage> {
   late TextEditingController proxyController;
   late TextEditingController serviceUrlController;
 

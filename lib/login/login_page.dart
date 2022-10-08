@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:isen_aurion_client/error.dart';
+import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
-import 'package:route_creator/route_creator.dart';
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/base_constants.dart';
@@ -15,18 +15,16 @@ import 'package:isen_ouest_companion/login/login_button.dart';
 import 'package:isen_ouest_companion/login/login_footer.dart';
 import 'package:isen_ouest_companion/login/login_icon.dart';
 import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
-import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
-import 'package:isen_ouest_companion/schedule/schedule_page.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  LoginPageState createState() => LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   late TextEditingController usernameController;
   late TextEditingController passwordController;
   bool usernameError = false;
@@ -74,10 +72,7 @@ class LoginPageState extends State<LoginPage> {
       await Aurion.login(username, password)
           .timeout(const Duration(seconds: 20));
 
-      Navigator.of(context).pushReplacement(createRoute(
-        const SchedulePage(),
-        Direction.fromRight,
-      ));
+      context.go('/schedule');
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -159,11 +154,7 @@ class LoginPageState extends State<LoginPage> {
                     passwordError = passwordController.text.isNotEmpty;
                   }
                 });
-                Navigator.of(context).push(createRoute(
-                    RecoverPasswordPage(
-                      usernameController: usernameController,
-                    ),
-                    Direction.fromBottom));
+                context.push('/recover');
               }),
             ],
           ),

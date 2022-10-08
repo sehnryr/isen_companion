@@ -176,6 +176,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.2"
+  custom_go_route:
+    dependency: "direct main"
+    description:
+      path: "packages/custom_go_route"
+      relative: true
+    source: path
+    version: "1.0.0"
   dart_style:
     dependency: transitive
     description:
@@ -289,6 +296,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.5"
   graphs:
     dependency: transitive
     description:
@@ -521,7 +535,7 @@ packages:
     source: hosted
     version: "4.2.4"
   progress_hud:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "packages/progress_hud"
       relative: true
@@ -555,13 +569,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
-  route_creator:
-    dependency: "direct main"
-    description:
-      path: "packages/route_creator"
-      relative: true
-    source: path
-    version: "1.1.0"
   rxdart:
     dependency: transitive
     description:
@@ -749,6 +756,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
+  url_strategy:
+    dependency: "direct main"
+    description:
+      name: url_strategy
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   vector_math:
     dependency: transitive
     description:
@@ -814,4 +828,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.17.6 <3.0.0"
-  flutter: ">=3.0.0"
+  flutter: ">=3.3.0"

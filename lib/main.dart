@@ -3,13 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:progress_hud/progress_hud.dart';
+import 'package:go_router/go_router.dart';
+import 'package:custom_go_route/slide_or_go_route.dart';
 import 'package:universal_html/html.dart' show window;
+import 'package:url_strategy/url_strategy.dart';
 
 import 'package:isen_ouest_companion/aurion.dart';
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 import 'package:isen_ouest_companion/config.dart';
 import 'package:isen_ouest_companion/login/login_page.dart';
+import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
+import 'package:isen_ouest_companion/schedule/schedule_page.dart';
+import 'package:isen_ouest_companion/settings/settings_page.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 void main() async {
@@ -17,6 +22,7 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -24,10 +30,10 @@ class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  MyAppState createState() => MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     () async {
@@ -44,15 +50,8 @@ class MyAppState extends State<MyApp> {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          FocusManager.instance.primaryFocus?.unfocus();
-        }
-      },
-      child: MaterialApp(
+  Widget build(BuildContext context) => MaterialApp.router(
+        routerConfig: router,
         title: 'ISEN Ouest Companion',
         locale: const Locale('fr', 'FR'),
         theme: ThemeData(
@@ -86,10 +85,43 @@ class MyAppState extends State<MyApp> {
               ? '-apple-system'
               : null,
         ),
-        home: Builder(builder: (context) {
-          return const ProgressHUD(child: LoginPage());
-        }),
+      );
+
+  final GoRouter router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        redirect: (context, state) {
+          return '/login';
+        },
       ),
-    );
-  }
+      SlideOrGoRoute(
+        path: '/login',
+        target: const LoginPage(),
+        direction: Direction.fromLeft,
+      ),
+      SlideOrGoRoute(
+        path: '/schedule',
+        target: const SchedulePage(),
+        direction: Direction.fromRight,
+        redirect: (context, state) async {
+          if (await Storage.get(StorageKey.password) == null) {
+            return '/login';
+          }
+          return null;
+        },
+      ),
+      SlideOrGoRoute(
+        path: '/settings',
+        target: const SettingsPage(),
+        direction: Direction.fromRight,
+      ),
+      SlideOrGoRoute(
+        path: '/recover',
+        target: const RecoverPasswordPage(),
+        direction: Direction.fromBottom,
+      ),
+    ],
+    initialLocation: '/login',
+  );
 }

@@ -18,12 +18,12 @@ dependencies:
     universal_html: ^2.0.8
     encrypted_shared_preferences: ^3.0.1
     table_calendar: ^3.0.7
+    go_router: ^5.0.5
+    url_strategy: ^0.2.0
 
     # personal packages
-    progress_hud:
-        path: packages/progress_hud
-    route_creator:
-        path: packages/route_creator
+    custom_go_route:
+        path: packages/custom_go_route
 
 dev_dependencies:
     flutter_test:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:route_creator/route_creator.dart';
+
+import 'package:go_router/go_router.dart';
 
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
-import 'package:isen_ouest_companion/settings/settings_page.dart';
 
 class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LoginAppBar({Key? key}) : super(key: key);
@@ -16,8 +16,7 @@ class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
       foregroundColor: Theme.of(context).colorScheme.primary,
       actions: [
         IconButton(
-          onPressed: () => Navigator.of(context)
-              .push(createRoute(const SettingsPage(), Direction.fromRight)),
+          onPressed: () => context.push('/settings'),
           icon: const Icon(Icons.settings),
         )
       ],

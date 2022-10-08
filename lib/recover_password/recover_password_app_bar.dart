@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:isen_ouest_companion/base/status_bar_color.dart';
 
 class RecoverPasswordAppBar extends StatelessWidget
@@ -14,7 +16,8 @@ class RecoverPasswordAppBar extends StatelessWidget
       elevation: 0,
       foregroundColor: Theme.of(context).colorScheme.primary,
       leading: IconButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () =>
+            context.canPop() ? context.pop() : context.go('/login'),
         icon: const Icon(Icons.clear),
       ),
     );
