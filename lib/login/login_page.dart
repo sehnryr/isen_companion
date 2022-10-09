@@ -72,7 +72,11 @@ class _LoginPageState extends State<LoginPage> {
       await Aurion.login(username, password)
           .timeout(const Duration(seconds: 20));
 
-      context.go('/schedule');
+      if (mounted) {
+        context.go('/schedule');
+      } else {
+        throw Exception("The widget is not mounted");
+      }
     } on AuthenticationException {
       const snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
