@@ -22,6 +22,8 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Proxy initialization
   String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
   proxyUrl = proxyUrl ?? (kIsWeb ? Config.proxyUrl : "");
