@@ -22,31 +22,22 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(const StatusBarColor());
 
+  // Proxy initialization
+  String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
+  proxyUrl = proxyUrl ?? (kIsWeb ? Config.proxyUrl : "");
+  await Storage.set(StorageKey.proxyUrl, proxyUrl);
+
+  // Service url initialization
+  String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
+  serviceUrl = serviceUrl ?? Config.serviceUrl;
+  await Aurion.init(serviceUrl);
+
   setPathUrlStrategy();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    () async {
-      String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
-      proxyUrl = proxyUrl ?? (kIsWeb ? Config.proxyUrl : "");
-      await Storage.set(StorageKey.proxyUrl, proxyUrl);
-
-      String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
-      serviceUrl = serviceUrl ?? Config.serviceUrl;
-      await Aurion.init(serviceUrl);
-    }.call();
-    super.initState();
-  }
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
