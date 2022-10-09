@@ -535,7 +535,7 @@ packages:
     source: hosted
     version: "4.2.4"
   progress_hud:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/progress_hud"
       relative: true

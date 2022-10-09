@@ -24,6 +24,8 @@ dependencies:
     # personal packages
     custom_go_route:
         path: packages/custom_go_route
+    progress_hud:
+        path: packages/progress_hud
 
 dev_dependencies:
     flutter_test:

@@ -7,9 +7,6 @@ import 'package:isen_aurion_client/error.dart';
 import 'package:isen_ouest_companion/storage.dart';
 
 class Aurion {
-  // The service url
-  static late String _serviceUrl;
-
   // The Aurion client
   static late IsenAurionClient _client;
 
@@ -72,8 +69,6 @@ class Aurion {
   }
 
   static Future<void> login(String username, String password) async {
-    await init(_serviceUrl);
-
     await Storage.set(StorageKey.username, username);
     await Storage.set(StorageKey.password, password);
 
@@ -84,7 +79,6 @@ class Aurion {
     await Storage.set(StorageKey.serviceUrl, serviceUrl);
 
     String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
-    _serviceUrl = serviceUrl;
     _client = IsenAurionClient(serviceUrl: "$proxyUrl$serviceUrl");
   }
 }
