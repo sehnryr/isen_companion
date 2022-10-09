@@ -13,6 +13,16 @@ De nombreux étudiants peuvent témoigner qu'Aurion n'est pas assez ergonomique 
 
 [website-url]: https://isen.melois.dev/
 
+## Fonctionnalités
+
+- [x] Emploi du temps de l'utilisateur
+- [ ] Emploi du temps d'un groupe
+- [ ] Disponibilité d'une salle
+- [ ] Voir les notes de l'utilisateur (si étudiant)
+- [ ] Voir les absences de l'utilisateur (si étudiant)
+- [x] Récupération du mot de passe
+- [ ] Sondages
+
 ## Contact
 
 Pour tout problème, suggestion ou autre, vous pouvez me contacter via Discord [Sehnryr#0001](https://discord.com/users/230563291146092545) (ou par email [youn@melois.dev](mailto:youn@melois.dev))
