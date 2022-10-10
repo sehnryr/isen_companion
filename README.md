@@ -29,7 +29,7 @@ ISEN Companion fonctionne sur la base d'un web scraper[^1] qui fait interface au
 
 Si vous utilisez l'application web, vous devrez utiliser un proxy pour passer outre la sécurité CORS. Pour cela j'ai utilisé [cors-proxy](https://github.com/sehnryr/cors-proxy) un projet que j'ai optimisé pour ISEN Companion. Le proxy est hébergé sur [Fly.io](https://fly.io/) et est donc gratuit. Si vous souhaitez héberger votre propre proxy, vous pouvez le faire en suivant les instructions du projet.
 
-> **Warning**
+> **Note**
 > Si vous êtes un utilisateur de Safari, vous ne pourrez pas modifier le proxy car le navigateur ne permet pas de faire des requêtes inter-sites et les cookies ne pourront pas êtres enregistrés. Il vous faudrait donc soit utiliser un autre navigateur, soit décocher l'option Confidentialité et Sécurité > Empêcher le suivi intersite.
 
 [^1]: Le web scraping est une technique d'extraction du contenu de sites Web, via un script ou un programme, dans le but de le transformer pour permettre son utilisation dans un autre contexte. (https://fr.wikipedia.org/wiki/Web_scraping)
