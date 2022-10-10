@@ -23,6 +23,17 @@ De nombreux étudiants peuvent témoigner qu'Aurion n'est pas assez ergonomique 
 - [x] Récupération du mot de passe
 - [ ] Sondages
 
+## Mentions légales
+
+ISEN Companion fonctionne sur la base d'un web scraper[^1] qui fait interface aux services de l'ISEN. Vos identifiants (utilisateur, mot de passe, cookie de connexion) ne sont stockés que sur vos appareils et dans le cache du navigateur de manière encrypté à l'aide de [`encrypted_shared_preferences`](https://pub.dev/packages/encrypted_shared_preferences). Les données sont stockées dans le cache du navigateur et sont supprimées lorsque vous supprimez le cache ou lorsque vous vous déconnectez.
+
+Si vous utilisez l'application web, vous devrez utiliser un proxy pour passer outre la sécurité CORS. Pour cela j'ai utilisé [cors-proxy](https://github.com/sehnryr/cors-proxy) un projet que j'ai optimisé pour ISEN Companion. Le proxy est hébergé sur [Fly.io](https://fly.io/) et est donc gratuit. Si vous souhaitez héberger votre propre proxy, vous pouvez le faire en suivant les instructions du projet.
+
+> **Note**
+> Si vous êtes un utilisateur de Safari, vous ne pourrez pas modifier le proxy car le navigateur ne permet pas de faire des requêtes inter-sites et les cookies ne pourront pas êtres enregistrés. Il vous faudrait donc soit utiliser un autre navigateur, soit décocher l'option Confidentialité et Sécurité > Empêcher le suivi intersite.
+
+[^1]: Le web scraping est une technique d'extraction du contenu de sites Web, via un script ou un programme, dans le but de le transformer pour permettre son utilisation dans un autre contexte. (https://fr.wikipedia.org/wiki/Web_scraping)
+
 ## Contact
 
 Pour tout problème, suggestion ou autre, vous pouvez me contacter via Discord [Sehnryr#0001](https://discord.com/users/230563291146092545) (ou par email [youn@melois.dev](mailto:youn@melois.dev))
