@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/base/base_button.dart';
+import 'package:isen_companion/base/base_button.dart';
 
 class SendLinkButton extends StatelessWidget {
   final void Function() onPressed;

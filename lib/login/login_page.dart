@@ -6,16 +6,16 @@ import 'package:isen_aurion_client/error.dart';
 import 'package:go_router/go_router.dart';
 import 'package:progress_hud/progress_hud.dart';
 
-import 'package:isen_ouest_companion/aurion.dart';
-import 'package:isen_ouest_companion/base/base_constants.dart';
-import 'package:isen_ouest_companion/base/password_input.dart';
-import 'package:isen_ouest_companion/base/username_input.dart';
-import 'package:isen_ouest_companion/login/login_app_bar.dart';
-import 'package:isen_ouest_companion/login/login_button.dart';
-import 'package:isen_ouest_companion/login/login_footer.dart';
-import 'package:isen_ouest_companion/login/login_icon.dart';
-import 'package:isen_ouest_companion/recover_password/recover_password_button.dart';
-import 'package:isen_ouest_companion/storage.dart';
+import 'package:isen_companion/aurion.dart';
+import 'package:isen_companion/base/base_constants.dart';
+import 'package:isen_companion/base/password_input.dart';
+import 'package:isen_companion/base/username_input.dart';
+import 'package:isen_companion/login/login_app_bar.dart';
+import 'package:isen_companion/login/login_button.dart';
+import 'package:isen_companion/login/login_footer.dart';
+import 'package:isen_companion/login/login_icon.dart';
+import 'package:isen_companion/recover_password/recover_password_button.dart';
+import 'package:isen_companion/storage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

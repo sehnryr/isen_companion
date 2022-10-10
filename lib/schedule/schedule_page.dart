@@ -4,10 +4,10 @@ import 'package:isen_aurion_client/event.dart';
 import 'package:progress_hud/progress_hud.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'package:isen_ouest_companion/aurion.dart';
-import 'package:isen_ouest_companion/schedule/schedule_app_bar.dart';
-import 'package:isen_ouest_companion/schedule/schedule_constants.dart';
-import 'package:isen_ouest_companion/schedule/schedule_week_table.dart';
+import 'package:isen_companion/aurion.dart';
+import 'package:isen_companion/schedule/schedule_app_bar.dart';
+import 'package:isen_companion/schedule/schedule_constants.dart';
+import 'package:isen_companion/schedule/schedule_week_table.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key? key}) : super(key: key);

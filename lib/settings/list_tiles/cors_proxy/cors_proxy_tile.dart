@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/settings/list_tiles/cors_proxy/cors_proxy_dialog.dart';
+import 'package:isen_companion/settings/list_tiles/cors_proxy/cors_proxy_dialog.dart';
 
 class CorsProxyTile extends StatelessWidget {
   final TextEditingController controller;

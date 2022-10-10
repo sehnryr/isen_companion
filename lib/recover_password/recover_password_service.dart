@@ -1,6 +1,6 @@
 import 'package:requests/requests.dart';
 
-import 'package:isen_ouest_companion/storage.dart';
+import 'package:isen_companion/storage.dart';
 
 enum RecoverResponseCode {
   error,

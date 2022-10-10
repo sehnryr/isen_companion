@@ -8,14 +8,14 @@ import 'package:custom_go_route/slide_or_go_route.dart';
 import 'package:universal_html/html.dart' show window;
 import 'package:url_strategy/url_strategy.dart';
 
-import 'package:isen_ouest_companion/aurion.dart';
-import 'package:isen_ouest_companion/base/status_bar_color.dart';
-import 'package:isen_ouest_companion/config.dart';
-import 'package:isen_ouest_companion/login/login_page.dart';
-import 'package:isen_ouest_companion/recover_password/recover_password_page.dart';
-import 'package:isen_ouest_companion/schedule/schedule_page.dart';
-import 'package:isen_ouest_companion/settings/settings_page.dart';
-import 'package:isen_ouest_companion/storage.dart';
+import 'package:isen_companion/aurion.dart';
+import 'package:isen_companion/base/status_bar_color.dart';
+import 'package:isen_companion/config.dart';
+import 'package:isen_companion/login/login_page.dart';
+import 'package:isen_companion/recover_password/recover_password_page.dart';
+import 'package:isen_companion/schedule/schedule_page.dart';
+import 'package:isen_companion/settings/settings_page.dart';
+import 'package:isen_companion/storage.dart';
 
 void main() async {
   await initializeDateFormatting();

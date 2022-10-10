@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/aurion.dart';
-import 'package:isen_ouest_companion/settings/list_tiles/service_url/service_url_input.dart';
+import 'package:isen_companion/aurion.dart';
+import 'package:isen_companion/settings/list_tiles/service_url/service_url_input.dart';
 
 class ServiceUrlDialog extends StatefulWidget {
   final TextEditingController controller;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/base/base_constants.dart';
+import 'package:isen_companion/base/base_constants.dart';
 
 class BaseInput extends StatefulWidget {
   final TextEditingController controller;
