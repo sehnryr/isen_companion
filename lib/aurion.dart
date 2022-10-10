@@ -4,7 +4,7 @@ import 'package:isen_aurion_client/client.dart';
 import 'package:isen_aurion_client/event.dart';
 import 'package:isen_aurion_client/error.dart';
 
-import 'package:isen_ouest_companion/storage.dart';
+import 'package:isen_companion/storage.dart';
 
 class Aurion {
   // The Aurion client

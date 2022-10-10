@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/base/base_input.dart';
+import 'package:isen_companion/base/base_input.dart';
 
 class ServiceUrlInput extends StatelessWidget {
   final TextEditingController controller;

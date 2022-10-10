@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/base/base_footer.dart';
+import 'package:isen_companion/base/base_footer.dart';
 
 class RecoverPasswordFooter extends BaseFooter {
   const RecoverPasswordFooter({Key? key})

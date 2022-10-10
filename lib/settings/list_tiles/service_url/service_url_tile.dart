@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_ouest_companion/settings/list_tiles/service_url/service_url_dialog.dart';
+import 'package:isen_companion/settings/list_tiles/service_url/service_url_dialog.dart';
 
 class ServiceUrlTile extends StatelessWidget {
   final TextEditingController controller;

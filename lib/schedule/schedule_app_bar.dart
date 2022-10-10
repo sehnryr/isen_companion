@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:isen_ouest_companion/base/status_bar_color.dart';
-import 'package:isen_ouest_companion/storage.dart';
+import 'package:isen_companion/base/status_bar_color.dart';
+import 'package:isen_companion/storage.dart';
 
 class ScheduleAppBar extends StatefulWidget implements PreferredSizeWidget {
   final void Function() showCalendarState;
