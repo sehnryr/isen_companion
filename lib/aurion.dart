@@ -6,9 +6,17 @@ import 'package:isen_aurion_client/error.dart';
 
 import 'package:isen_companion/storage.dart';
 
+enum Campus {
+  brest,
+  caen,
+  lille,
+  nantes,
+  rennes,
+}
+
 class Aurion {
   // The Aurion client
-  static late IsenAurionClient _client;
+  static late AurionClient _client;
 
   /// Get the default start date for the schedule.
   /// 2 weeks before the current week.
@@ -50,10 +58,10 @@ class Aurion {
   ///
   /// Throws [ParameterNotFound] if Aurion's schedule is not in the
   /// expected format.
-  static Future<LinkedHashMap<DateTime, List<Event>>> getSchedule({
+  static Future<LinkedHashMap<DateTime, List<Event>>> getGroupSchedule({
     required String groupId,
   }) async {
-    List<Event> schedule = await _client.getSchedule(groupId: groupId);
+    List<Event> schedule = await _client.getGroupSchedule(groupId: groupId);
 
     return parseSchedule(schedule);
   }
@@ -69,16 +77,56 @@ class Aurion {
   }
 
   static Future<void> login(String username, String password) async {
+    await init();
+
     await Storage.set(StorageKey.username, username);
     await Storage.set(StorageKey.password, password);
 
     await _client.login(username, password);
   }
 
-  static Future<void> init(String serviceUrl) async {
-    await Storage.set(StorageKey.serviceUrl, serviceUrl);
+  static Future<void> init() async {
+    _client = await _getClient(Campus.nantes);
+  }
+
+  /// Get the Aurion client for the given [campus].
+  ///
+  /// TODO: Make the campus configurable.
+  static Future<AurionClient> _getClient(Campus campus) async {
+    int languageCode;
+    String schoolingId;
+    String userPlanningId;
+    String groupsPlanningsId;
+    String serviceUrl;
 
     String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
-    _client = IsenAurionClient(serviceUrl: "$proxyUrl$serviceUrl");
+
+    switch (campus) {
+      case Campus.brest:
+      case Campus.caen:
+      case Campus.nantes:
+      case Campus.rennes:
+        languageCode = 275805;
+        schoolingId = 'submenu_291906';
+        userPlanningId = '1_3';
+        groupsPlanningsId = 'submenu_299102';
+        serviceUrl = '${proxyUrl}https://web.isen-ouest.fr/webAurion/';
+        break;
+      case Campus.lille:
+        languageCode = 44323;
+        schoolingId = 'submenu_44413';
+        userPlanningId = '3_3';
+        groupsPlanningsId = 'submenu_3131476';
+        serviceUrl = '${proxyUrl}https://aurion.junia.com/';
+        break;
+    }
+
+    return AurionClient(
+      languageCode: languageCode,
+      schoolingId: schoolingId,
+      userPlanningId: userPlanningId,
+      groupsPlanningsId: groupsPlanningsId,
+      serviceUrl: serviceUrl,
+    );
   }
 }
