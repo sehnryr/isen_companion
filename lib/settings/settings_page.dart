@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:isen_companion/storage.dart';
 import 'package:isen_companion/settings/settings_app_bar.dart';
 import 'package:isen_companion/settings/list_tiles/cors_proxy/cors_proxy_tile.dart';
-import 'package:isen_companion/settings/list_tiles/service_url/service_url_tile.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -14,17 +13,12 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   late TextEditingController proxyController;
-  late TextEditingController serviceUrlController;
 
   @override
   void initState() {
     proxyController = TextEditingController();
     Storage.get(StorageKey.proxyUrl).then((value) => setState(() {
           proxyController.text = value!;
-        }));
-    serviceUrlController = TextEditingController();
-    Storage.get(StorageKey.serviceUrl).then((value) => setState(() {
-          serviceUrlController.text = value!;
         }));
     super.initState();
   }
@@ -50,11 +44,6 @@ class _SettingsPageState extends State<SettingsPage> {
             onClose: () =>
                 setState(() => proxyController.text = proxyController.text),
           ),
-          // ServiceUrlTile(
-          //   controller: serviceUrlController,
-          //   onClose: () => setState(
-          //       () => serviceUrlController.text = serviceUrlController.text),
-          // )
         ],
       ),
     );
