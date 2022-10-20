@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:isen_companion/aurion.dart';
 import 'package:isen_companion/storage.dart';
 import 'package:isen_companion/settings/list_tiles/cors_proxy/cors_proxy_input.dart';
 
@@ -64,13 +63,8 @@ class _CORSProxyDialogState extends State<CORSProxyDialog> {
                 proxyError = !_proxyValidation(widget.controller.text);
                 if (!proxyError) {
                   proxy = widget.controller.text.trim();
-                  Storage.set(StorageKey.proxyUrl, proxy).then((value) async {
-                    String serviceUrl =
-                        await Storage.get(StorageKey.serviceUrl) ?? "";
-                    await Aurion.init(serviceUrl);
-                    () {
-                      Navigator.pop(context, 'OK');
-                    }.call();
+                  Storage.set(StorageKey.proxyUrl, proxy).then((_) {
+                    Navigator.pop(context, 'OK');
                   });
                 }
               },
