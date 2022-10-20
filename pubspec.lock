@@ -386,7 +386,7 @@ packages:
       name: isen_aurion_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.0-alpha.1"
   js:
     dependency: transitive
     description:
@@ -568,7 +568,7 @@ packages:
       name: requests
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.7.0"
+    version: "4.8.0-alpha.0"
   rxdart:
     dependency: transitive
     description:
