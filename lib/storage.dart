@@ -4,7 +4,6 @@ enum StorageKey {
   username,
   password,
   proxyUrl,
-  serviceUrl,
 }
 
 class Storage {
