@@ -8,7 +8,6 @@ import 'package:custom_go_route/slide_or_go_route.dart';
 import 'package:universal_html/html.dart' show window;
 import 'package:url_strategy/url_strategy.dart';
 
-import 'package:isen_companion/aurion.dart';
 import 'package:isen_companion/base/status_bar_color.dart';
 import 'package:isen_companion/config.dart';
 import 'package:isen_companion/login/login_page.dart';
@@ -28,11 +27,6 @@ void main() async {
   String? proxyUrl = await Storage.get(StorageKey.proxyUrl);
   proxyUrl = proxyUrl ?? (kIsWeb ? Config.proxyUrl : "");
   await Storage.set(StorageKey.proxyUrl, proxyUrl);
-
-  // Service url initialization
-  String? serviceUrl = await Storage.get(StorageKey.serviceUrl);
-  serviceUrl = serviceUrl ?? Config.serviceUrl;
-  await Aurion.init(serviceUrl);
 
   setPathUrlStrategy();
   runApp(MyApp());
