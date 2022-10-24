@@ -49,13 +49,13 @@ class MyApp extends StatelessWidget {
         locale: const Locale('fr', 'FR'),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: const Color(0xFF6D6875),
+            primary: const Color(0xFF6E6E6E),
             onPrimary: Colors.white,
-            primaryContainer: const Color(0xFF4D4955),
+            primaryContainer: const Color(0xFF4F4F4F),
           ),
           textTheme: const TextTheme(
             headline1: TextStyle(
-              color: Color(0xFF6D6875),
+              color: Color(0xFF6E6E6E),
               letterSpacing: -1.5,
               fontSize: 34,
               fontWeight: FontWeight.w500,
