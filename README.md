@@ -23,7 +23,7 @@ De nombreux étudiants peuvent témoigner qu'Aurion n'est pas assez ergonomique 
 - [x] Récupération du mot de passe
 - [ ] Sondages
 
-## Mentions légales
+## Politique de confidentialité
 
 ISEN Companion fonctionne sur la base d'un web scraper[^1] qui fait interface aux services de l'ISEN. Vos identifiants (utilisateur, mot de passe, cookie de connexion) ne sont stockés que sur vos appareils et dans le cache du navigateur de manière encrypté à l'aide de [`encrypted_shared_preferences`](https://pub.dev/packages/encrypted_shared_preferences). Les données sont stockées dans le cache du navigateur et sont supprimées lorsque vous supprimez le cache ou lorsque vous vous déconnectez.
 
