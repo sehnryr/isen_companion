@@ -51,7 +51,7 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
               ),
               const SizedBox(height: 10),
               const Text(
-                "Indiquez votre identifiant et code¹ et recevez un lien par mail pour réinitialiser votre mot de passe.",
+                "Indiquez votre identifiant et n° étudiant¹ et recevez un lien par mail pour réinitialiser votre mot de passe.",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
