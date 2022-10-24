@@ -18,7 +18,7 @@ class RecoverPasswordAppBar extends StatelessWidget
       leading: IconButton(
         onPressed: () =>
             context.canPop() ? context.pop() : context.go('/login'),
-        icon: const Icon(Icons.clear),
+        icon: const Icon(Icons.arrow_back),
       ),
     );
   }
