@@ -22,10 +22,6 @@ class CorsProxyTile extends StatelessWidget {
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       subtitle: Text(controller.text.isNotEmpty ? controller.text : "Aucun"),
-      trailing: Icon(
-        Icons.edit,
-        color: Theme.of(context).colorScheme.primary,
-      ),
       onTap: () {
         showDialog(
           context: context,
