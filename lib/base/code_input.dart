@@ -19,7 +19,7 @@ class CodeInput extends StatelessWidget {
     return BaseInput(
       controller: controller,
       autofillHints: const [AutofillHints.username],
-      labelText: "Code",
+      labelText: "N° Étudiant",
       errorText: "Veuillez indiquer un code valide",
       prefixIcon: const Icon(Icons.tag),
       error: error,
