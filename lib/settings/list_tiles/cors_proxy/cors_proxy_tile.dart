@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:isen_companion/platform.dart';
 import 'package:isen_companion/settings/list_tiles/cors_proxy/cors_proxy_dialog.dart';
 
 class CorsProxyTile extends StatelessWidget {
@@ -23,6 +24,7 @@ class CorsProxyTile extends StatelessWidget {
       ),
       subtitle: Text(controller.text.isNotEmpty ? controller.text : "Aucun"),
       onTap: () {
+        if (Platform.isSafari) return;
         showDialog(
           context: context,
           builder: (BuildContext context) {
