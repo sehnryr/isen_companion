@@ -82,8 +82,6 @@ class Aurion {
     await Storage.set(StorageKey.username, username);
     await Storage.set(StorageKey.password, password);
 
-    _client = IsenAurionClient(serviceUrl: _client.serviceUrl);
-
     await _client.login(username, password);
   }
 
