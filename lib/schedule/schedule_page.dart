@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:isen_aurion_client/event.dart';
-import 'package:progress_hud/progress_hud.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'package:isen_companion/aurion.dart';
